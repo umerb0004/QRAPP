@@ -1,0 +1,171 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Approval {
+  approval_id Int       @id
+  nominee_id  Int?
+  title       String?   @db.VarChar(255)
+  reason      String?   @db.VarChar(255)
+  status      Int?      @db.TinyInt
+  created_at  DateTime? @db.Date
+  updated_at  DateTime? @db.Date
+  Nominees    Nominees? @relation(fields: [nominee_id], references: [nominee_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_Approval_Nominees1")
+
+  @@index([nominee_id], map: "fk_Approval_Nominees1_idx")
+}
+
+model Audit {
+  audit_id    Int           @id
+  user_id     String?       @db.VarChar(255)
+  change_set  Json?
+  record_name String?       @db.VarChar(255)
+  created_at  DateTime?     @db.Date
+  Users       Users?        @relation(fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_Audit_Users1")
+  Nominees    Nominees[]
+  Reveiw_Tags Reveiw_Tags[]
+  Tasks       Tasks[]
+
+  @@index([user_id], map: "fk_Audit_Users1_idx")
+}
+
+model Biweakly_Meeting {
+  biweakly_meeting_id Int       @id
+  user_id             String?   @db.VarChar(255)
+  created_at          DateTime? @db.Date
+  updated_at          DateTime? @db.Date
+  Users               Users?    @relation(fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_Biweakly Meeting_Users1")
+
+  @@index([user_id], map: "fk_Biweakly Meeting_Users1_idx")
+  @@map("Biweakly Meeting")
+}
+
+model Feedback {
+  feedback_id    Int           @id
+  user_review_id Int?
+  reviewed_by_id Int?
+  rating         Float?        @db.Float
+  reason         String?       @db.VarChar(255)
+  created_at     DateTime?     @db.Date
+  updated_at     DateTime?     @db.Date
+  User_Reviews   User_Reviews? @relation(fields: [user_review_id], references: [user_review_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_Feedback_User Reviews1")
+
+  @@index([user_review_id], map: "fk_Feedback_User Reviews1_idx")
+}
+
+model Nominees {
+  nominee_id     Int           @id
+  audit_id       Int?
+  user_review_id Int?
+  title          String?       @db.VarChar(255)
+  quater_no      Int?
+  quater_year    Int?
+  reason         String?       @db.VarChar(255)
+  created_at     DateTime?     @db.Date
+  deleted_at     DateTime?     @db.Date
+  updated_at     DateTime?     @db.Date
+  Approval       Approval[]
+  Audit          Audit?        @relation(fields: [audit_id], references: [audit_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_Nominees_Audit1")
+  User_Reviews   User_Reviews? @relation(fields: [user_review_id], references: [user_review_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_Nominees_User Reviews1")
+
+  @@index([audit_id], map: "fk_Nominees_Audit1_idx")
+  @@index([user_review_id], map: "fk_Nominees_User Reviews1_idx")
+}
+
+model Reveiw_Tags {
+  review_tags_id   Int                @id
+  audit_id         Int?
+  tags_name        String?            @db.VarChar(255)
+  description      String?            @db.VarChar(255)
+  is_deleted       Int?               @db.TinyInt
+  created_at       DateTime?          @db.Date
+  deleted_at       DateTime?          @db.Date
+  updated_at       DateTime?          @db.Date
+  Audit            Audit?             @relation(fields: [audit_id], references: [audit_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_Reveiw Tags_Audit1")
+  Review_Templates Review_Templates[]
+
+  @@index([audit_id], map: "fk_Reveiw Tags_Audit1_idx")
+  @@map("Reveiw Tags")
+}
+
+model Review_Templates {
+  review_template_id Int          @id
+  review_tags_id     Int?
+  description        String?      @db.VarChar(45)
+  weightage          Float?       @db.Float
+  created_at         DateTime?    @db.Date
+  updated_at         DateTime?    @db.Date
+  Reveiw_Tags        Reveiw_Tags? @relation(fields: [review_tags_id], references: [review_tags_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_Review Templates_Reveiw Tags1")
+
+  @@index([review_tags_id], map: "fk_Review Templates_Reveiw Tags1_idx")
+  @@map("Review Templates")
+}
+
+model Tasks {
+  task_id        Int           @id
+  user_id        String?       @db.VarChar(255)
+  audit_id       Int?
+  user_review_id Int?
+  description    String?       @db.VarChar(255)
+  duration       DateTime?     @db.Date
+  rating         Float?        @db.Float
+  status         Int?          @db.TinyInt
+  type           String?       @db.VarChar(255)
+  created_at     DateTime?     @db.Date
+  updated_at     DateTime?     @db.Date
+  Audit          Audit?        @relation(fields: [audit_id], references: [audit_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_Tasks_Audit1")
+  User_Reviews   User_Reviews? @relation(fields: [user_review_id], references: [user_review_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_Tasks_User Reviews1")
+  Users          Users?        @relation(fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_Tasks_Users1")
+
+  @@index([audit_id], map: "fk_Tasks_Audit1_idx")
+  @@index([user_review_id], map: "fk_Tasks_User Reviews1_idx")
+  @@index([user_id], map: "fk_Tasks_Users1_idx")
+}
+
+model User_Reviews {
+  user_review_id  Int        @id
+  user_id         String?    @db.VarChar(255)
+  estimated_point Float?     @db.Float
+  marks_recevied  Float?     @db.Float
+  is_approved     Int?       @db.TinyInt
+  reviewed_by_id  Int?
+  quater_no       Int?
+  on_leave        Int?       @db.TinyInt
+  created_at      DateTime?  @db.Date
+  updated_at      DateTime?  @db.Date
+  Feedback        Feedback[]
+  Nominees        Nominees[]
+  Tasks           Tasks[]
+  Users           Users?     @relation(fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_User Reviews_Users")
+
+  @@index([user_id], map: "fk_User Reviews_Users_idx")
+  @@map("User Reviews")
+}
+
+model Users {
+  user_id              String             @id @unique(map: "user_id_UNIQUE") @db.VarChar(255)
+  first_name           String             @db.VarChar(255)
+  last_name            String             @db.VarChar(255)
+  joining_date         DateTime           @db.Date
+  department_name      String             @db.VarChar(255)
+  designation          String             @db.VarChar(255)
+  email                String             @db.VarChar(255)
+  employee_id          Int                @map(" employee_id") @db.UnsignedInt
+  lead_id              Int                @db.UnsignedInt
+  manager_id           Int                @db.UnsignedInt
+  on_leave             Int                @db.UnsignedTinyInt
+  partial_joining_date DateTime           @db.Date
+  profile_pic          DateTime           @db.Date
+  created_at           DateTime?          @db.Date
+  deleted_at           DateTime?          @db.Date
+  updated_at           DateTime?          @db.Date
+  Audit                Audit[]
+  Biweakly_Meeting     Biweakly_Meeting[]
+  Tasks                Tasks[]
+  User_Reviews         User_Reviews[]
+}
