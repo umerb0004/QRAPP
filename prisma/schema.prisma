@@ -81,7 +81,7 @@ model ReveiwTags {
   review_tags_id  Int               @id
   audit_id        Int
   tags_name       String            @default("") @db.VarChar(35)
-  description     String            @default("") @db.VarChar(35)
+  description     String            @default("") @db.VarChar(2000)
   created_at      DateTime          @default(now())
   deleted_at      DateTime          @default(now())
   updated_at      DateTime          @updatedAt
@@ -159,7 +159,7 @@ model Users {
   manager_id           Int               @db.UnsignedInt
   on_leave             Boolean           @default(false) @db.TinyInt
   partial_joining_date DateTime          @db.Date
-  profile_pic          String            @default("") @db.VarChar(255)
+  profile_pic          String            @default("") @db.VarChar(1000)
   created_at           DateTime          @default(now())
   deleted_at           DateTime          @default(now())
   updated_at           DateTime          @updatedAt
