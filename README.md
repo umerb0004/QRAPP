@@ -1,36 +1,105 @@
-# Review App - RAPP 
+# RAAP
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+RAAP is a performance management software offers flexible features for Team Lead and a simple employee experience. That means you can automate your existing process or the one you're dreaming of, without compromise. Your Team Leads and employees will thank you. 
 
-## Getting Started
+## Requirements
 
-First, run the development server:
+For development, you will only need Node.js installed on your environment.
+And please use the appropriate [Editorconfig](http://editorconfig.org/) plugin for your Editor (not mandatory).
 
+### Node
+
+[Node](http://nodejs.org/) is really easy to install & now include [NPM](https://npmjs.org/).
+You should be able to run the following command after the installation procedure
+below.
 ```bash
-npm run dev
-# or
-yarn dev
+ node --version v18.12.0
+
+ npm --version 8.19.2
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Installations
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+#### Node installation on OS X
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+You will need to use a Terminal. On OS X, you can find the default terminal in
+`/Applications/Utilities/Terminal.app`.
 
-## Learn More
+Please install [Homebrew](http://brew.sh/) if it's not already done with the following command.
 
-To learn more about Next.js, take a look at the following resources:
+  $ ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+If everything when fine, you should run
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+  brew install node
 
-## Deploy on Vercel
+#### Node installation on Linux
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+  sudo apt-get install python-software-properties
+  sudo add-apt-repository ppa:chris-lea/node.js
+  sudo apt-get update
+  sudo apt-get install nodejs
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+#### Install NPM packages
+```bash
+ npm install
+```
+## Start & watch
+
+  
+```bash
+ npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result
+
+
+## Languages & tools
+ 
+
+### TypeScript
+
+- [Next.js](https://github.com/vercel/next.js) is used for frontend and backend.
+- [eslint](https://eslint.org/) for better code quality.
+- [prettier](https://prettier.io/) for maintaining code quality in project.
+
+### Database Setup
+Migration run 
+```bash
+ npx prisma migrate dev
+```
+DB seed
+```bash
+ npx prisma db seed
+```
+
+### Tailwind CSS
+- [Tailwind](https://tailwindcss.com/) is used for styling.
+
+## Environment Variables
+Create a .env file in the root of your project and add following variables 
+
+- DATABASE_URL=
+- GOOGLE_CLIENT_ID= 
+- GOOGLE_CLIENT_SECRET=
+- NEXTAUTH_URL=
+- JWT_SECRET= 
+
+## Notes
+- Created DB schema
+- Implemented Sign In with Goolge Functionality.
+- Created UI for Login Page
+- Created UI of Sidebar.
+- Sent Email to Reporting To.
+- Added ESLint and Stylelint for consistency and better code quality.
+
+
+
+## Future Work
+- We can add proper Authentication Process where user can signup with email and password.
+- We can add detailed test cases.
+- We can add Profile page.
+- We can add profile CRUD.
+- We can add side bar functionality
+- We can save data of users in DB
