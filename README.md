@@ -1,6 +1,6 @@
 # RAAP
 
-RAAP is a performance management software offers flexible features for Team Lead and a simple employee experience. That means you can automate your existing process or the one you're dreaming of, without compromise. Your Team Leads and employees will thank you. 
+RAAP is a performance management software offers flexible features for Team Lead and a simple employee experience. That means you can automate your existing process or the one you're dreaming of, without compromise. Your Team Leads and employees will thank you.
 
 ## Requirements
 
@@ -47,7 +47,7 @@ If everything when fine, you should run
 ```
 ## Start & watch
 
-  
+
 ```bash
  npm run dev
 ```
@@ -56,7 +56,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 
 ## Languages & tools
- 
+
 
 ### TypeScript
 
@@ -65,7 +65,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - [prettier](https://prettier.io/) for maintaining code quality in project.
 
 ### Database Setup
-Migration run 
+Migration run
 ```bash
  npx prisma migrate dev
 ```
@@ -78,14 +78,16 @@ DB seed
 - [Tailwind](https://tailwindcss.com/) is used for styling.
 
 ## Environment Variables
-Create a .env file in the root of your project and add following variables 
+Create a .env file in the root of your project and add following variables
 
 - DATABASE_URL=
-- GOOGLE_CLIENT_ID= 
+- GOOGLE_CLIENT_ID=
 - GOOGLE_CLIENT_SECRET=
 - NEXTAUTH_URL=
-- JWT_SECRET= 
-
+- JWT_SECRET=
+- NEXT_PUBLIC_SG_API_KEY =
+- NEXT_PUBLIC_FROM_EMAIL =
+- NEXT_PUBLIC_CRONJOB_API =
 ## Notes
 - Created DB schema
 - Implemented Sign In with Goolge Functionality.
