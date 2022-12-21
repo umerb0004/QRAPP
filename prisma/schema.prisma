@@ -8,60 +8,56 @@ datasource db {
 }
 
 model Approval {
-  approval_id Int       @id
+  id          Int       @id
   nominee_id  String    @default(uuid()) @db.VarChar(255)
   title       String    @default("") @db.VarChar(60)
   reason      String    @default("") @db.VarChar(2000)
   status      Boolean   @default(false) @db.TinyInt
   created_at  DateTime  @default(now())
   updated_at  DateTime  @updatedAt
-  Nominees    Nominees? @relation(fields: [nominee_id], references: [nominee_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_Approval_Nominees1")
+  Nominees    Nominees? @relation(fields: [nominee_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 
-  @@index([nominee_id], map: "fk_Approval_Nominees1_idx")
+  @@index([nominee_id])
 }
 
 model Audit {
-  audit_id    Int          @id
+  id          Int          @id
   user_id     String       @default(uuid()) @db.VarChar(255)
   change_set  Json
   record_id   String
   record_name String       @default("") @db.VarChar(255)
   created_at  DateTime     @default(now())
-  Users       Users        @relation(fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_Audit_Users1")
-  Nominees    Nominees?
-  ReveiwTags  ReveiwTags[]
+  Users       Users        @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 
-  @@index([user_id], map: "fk_Audit_Users1_idx")
+  @@index([user_id])
 }
 
 model BiweaklyMeeting {
-  BiweaklyMeeting_id Int      @id
+  id                 String      @id @default(uuid()) @db.VarChar(255)
   user_id            String
   created_at         DateTime @default(now())
   updated_at         DateTime @updatedAt
-  Users              Users    @relation(fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_Biweakly Meeting_Users1")
+  Users              Users    @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 
-  @@index([user_id], map: "fk_Biweakly Meeting_Users1_idx")
-  @@map("Biweakly Meeting")
+  @@index([user_id])
 }
 
 model Feedback {
-  feedback_id    Int         @id
-  user_review_id Int
+  id             String         @id @default(uuid()) @db.VarChar(255)
+  user_review_id String
   reviewed_by_id Int
   rating         Float       @default(0.0) @db.Float
   reason         String      @default("") @db.VarChar(2000)
   created_at     DateTime    @default(now())
   updated_at     DateTime    @updatedAt
-  UserReviews    UserReviews @relation(fields: [user_review_id], references: [user_review_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_Feedback_User Reviews1")
+  UserReviews    UserReviews @relation(fields: [user_review_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 
-  @@index([user_review_id], map: "fk_Feedback_User Reviews1_idx")
+  @@index([user_review_id])
 }
 
 model Nominees {
-  nominee_id     String      @id @default(uuid()) @db.VarChar(255)
-  audit_id       Int         @unique
-  user_review_id Int
+  id             String      @id @default(uuid()) @db.VarChar(255)
+  user_review_id String
   title          String      @db.VarChar(100)
   quater_no      Int         @default(1) @db.UnsignedInt
   quater_year    Int         @default(2022) @db.UnsignedInt
@@ -70,47 +66,41 @@ model Nominees {
   deleted_at     DateTime    @default(now())
   updated_at     DateTime    @updatedAt
   Approval       Approval[]
-  Audit          Audit       @relation(fields: [audit_id], references: [audit_id])
-  user_reviews   UserReviews @relation(fields: [user_review_id], references: [user_review_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_Nominees_User Reviews1")
+  user_reviews   UserReviews @relation(fields: [user_review_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 
-  @@index([audit_id], map: "fk_Nominees_Audit1_idx")
-  @@index([user_review_id], map: "fk_Nominees_User Reviews1_idx")
+  @@index([user_review_id])
 }
 
-model ReveiwTags {
-  review_tags_id  Int               @id
-  audit_id        Int
+model ReviewTags {
+  id              Int               @id
   tags_name       String            @default("") @db.VarChar(35)
   description     String            @default("") @db.VarChar(2000)
   created_at      DateTime          @default(now())
   deleted_at      DateTime          @default(now())
   updated_at      DateTime          @updatedAt
-  Audit           Audit             @relation(fields: [audit_id], references: [audit_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_Reveiw Tags_Audit1")
   ReviewTemplates ReviewTemplates[]
 
-  @@index([audit_id], map: "fk_Reveiw Tags_Audit1_idx")
-  @@map("Reveiw Tags")
 }
 
 model ReviewTemplates {
-  review_template_id Int         @id
+  id                 Int         @id
   review_tags_id     Int
-  user_review_id     Int
+  user_review_id     String
   weightage          Float       @default(0.0) @db.Float
   created_at         DateTime    @default(now())
   updated_at         DateTime    @updatedAt
-  ReveiwTags         ReveiwTags  @relation(fields: [review_tags_id], references: [review_tags_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_Review Templates_Reveiw Tags1")
-  UserReviews        UserReviews @relation(fields: [user_review_id], references: [user_review_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_ReviewTemplates_User Reviews1")
+  deleted_at      DateTime       @default(now())
+  ReviewTags         ReviewTags  @relation(fields: [review_tags_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  UserReviews        UserReviews @relation(fields: [user_review_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 
-  @@index([user_review_id], map: "fk_ReviewTemplates_User Reviews1_idx")
-  @@index([review_tags_id], map: "fk_Review Templates_Reveiw Tags1_idx")
-  @@map("Review Templates")
+  @@index([user_review_id])
+  @@index([review_tags_id])
 }
 
 model Tasks {
-  task_id        Int         @id
+  id             String      @id @default(uuid()) @db.VarChar(255)
   user_id        String
-  user_review_id Int
+  user_review_id String
   description    String      @db.VarChar(2000)
   duration       DateTime    @db.Date
   rating         Float       @default(0.0) @db.Float
@@ -118,15 +108,15 @@ model Tasks {
   type           String      @default("") @db.VarChar(255)
   created_at     DateTime    @default(now())
   updated_at     DateTime    @updatedAt
-  UserReviews    UserReviews @relation(fields: [user_review_id], references: [user_review_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_Tasks_User Reviews1")
-  Users          Users       @relation(fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_Tasks_Users1")
+  UserReviews    UserReviews @relation(fields: [user_review_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  Users          Users       @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 
-  @@index([user_review_id], map: "fk_Tasks_User Reviews1_idx")
-  @@index([user_id], map: "fk_Tasks_Users1_idx")
+  @@index([user_review_id])
+  @@index([user_id])
 }
 
 model UserReviews {
-  user_review_id  Int               @id
+  id              String            @id @default(uuid()) @db.VarChar(255)
   user_id         String
   marks_received  Json
   estimated_point Float             @default(0.0) @db.Float
@@ -140,25 +130,26 @@ model UserReviews {
   Nominees        Nominees[]
   ReviewTemplates ReviewTemplates[]
   Tasks           Tasks[]
-  Users           Users             @relation(fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_User Reviews_Users")
+  Users           Users             @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 
-  @@index([user_id], map: "fk_User Reviews_Users_idx")
-  @@map("User Reviews")
+  @@index([user_id])
 }
 
 model Users {
-  user_id              String            @id @default(uuid()) @db.VarChar(255)
+  id                   String            @id @default(uuid()) @db.VarChar(255)
   first_name           String            @default("") @db.VarChar(30)
   last_name            String            @default("") @db.VarChar(30)
   joining_date         DateTime          @db.Date
-  department_name      String            @default("") @db.VarChar(50)
-  designation          String            @default("") @db.VarChar(50)
+  department_id        Int
+  designation_id       Int
   email                String            @unique @db.VarChar(100)
+  password             String            @default("") @db.VarChar(200)
   employee_id          Int               @db.UnsignedInt
   lead_id              Int               @db.UnsignedInt
   manager_id           Int               @db.UnsignedInt
   on_leave             Boolean           @default(false) @db.TinyInt
   partial_joining_date DateTime          @db.Date
+  review_date          DateTime          @db.Date
   profile_pic          String            @default("") @db.VarChar(1000)
   created_at           DateTime          @default(now())
   deleted_at           DateTime          @default(now())
@@ -167,4 +158,26 @@ model Users {
   BiweaklyMeeting      BiweaklyMeeting[]
   Tasks                Tasks[]
   UserReviews          UserReviews[]
+  Departments          Departments       @relation(fields: [department_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  Designations         Designations      @relation(fields: [designation_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  @@index([department_id])
+  @@index([designation_id])
+}
+
+model Departments {
+  id                   Int            @id
+  name                 String            @default("") @db.VarChar(30)
+  created_at           DateTime          @default(now())
+  deleted_at           DateTime          @default(now())
+  updated_at           DateTime          @updatedAt
+  Users                Users[]
+}
+
+model Designations {
+  id                   Int               @id
+  name                 String            @default("") @db.VarChar(30)
+  created_at           DateTime          @default(now())
+  deleted_at           DateTime          @default(now())
+  updated_at           DateTime          @updatedAt
+  Users                Users[]
 }
