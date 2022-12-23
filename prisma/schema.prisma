@@ -33,7 +33,7 @@ model Audit {
 }
 
 model BiweaklyMeeting {
-  id                 String      @id @default(uuid()) @db.VarChar(255)
+  id                 String   @id @default(uuid()) @db.VarChar(255)
   user_id            String
   created_at         DateTime @default(now())
   updated_at         DateTime @updatedAt
@@ -43,7 +43,7 @@ model BiweaklyMeeting {
 }
 
 model Feedback {
-  id             String         @id @default(uuid()) @db.VarChar(255)
+  id             String      @id @default(uuid()) @db.VarChar(255)
   user_review_id String
   reviewed_by_id Int
   rating         Float       @default(0.0) @db.Float
@@ -63,7 +63,7 @@ model Nominees {
   quater_year    Int         @default(2022) @db.UnsignedInt
   reason         String      @default("") @db.VarChar(2000)
   created_at     DateTime    @default(now())
-  deleted_at     DateTime    @default(now())
+  deleted_at     DateTime?
   updated_at     DateTime    @updatedAt
   Approval       Approval[]
   user_reviews   UserReviews @relation(fields: [user_review_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
@@ -73,10 +73,10 @@ model Nominees {
 
 model ReviewTags {
   id              Int               @id
-  tags_name       String            @default("") @db.VarChar(35)
+  name            String            @default("") @db.VarChar(35)
   description     String            @default("") @db.VarChar(2000)
   created_at      DateTime          @default(now())
-  deleted_at      DateTime          @default(now())
+  deleted_at      DateTime?
   updated_at      DateTime          @updatedAt
   ReviewTemplates ReviewTemplates[]
 
@@ -89,7 +89,7 @@ model ReviewTemplates {
   weightage          Float       @default(0.0) @db.Float
   created_at         DateTime    @default(now())
   updated_at         DateTime    @updatedAt
-  deleted_at      DateTime       @default(now())
+  deleted_at         DateTime?
   ReviewTags         ReviewTags  @relation(fields: [review_tags_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   UserReviews        UserReviews @relation(fields: [user_review_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 
@@ -152,7 +152,7 @@ model Users {
   review_date          DateTime          @db.Date
   profile_pic          String            @default("") @db.VarChar(1000)
   created_at           DateTime          @default(now())
-  deleted_at           DateTime          @default(now())
+  deleted_at           DateTime?
   updated_at           DateTime          @updatedAt
   Audit                Audit[]
   BiweaklyMeeting      BiweaklyMeeting[]
@@ -165,19 +165,22 @@ model Users {
 }
 
 model Departments {
-  id                   Int            @id
+  id                   Int               @id
   name                 String            @default("") @db.VarChar(30)
   created_at           DateTime          @default(now())
-  deleted_at           DateTime          @default(now())
+  deleted_at           DateTime?
   updated_at           DateTime          @updatedAt
   Users                Users[]
+  Designations         Designations[]
 }
 
 model Designations {
   id                   Int               @id
   name                 String            @default("") @db.VarChar(30)
+  department_id        Int
   created_at           DateTime          @default(now())
-  deleted_at           DateTime          @default(now())
+  deleted_at           DateTime?
   updated_at           DateTime          @updatedAt
   Users                Users[]
+  Departments          Departments       @relation(fields: [department_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
