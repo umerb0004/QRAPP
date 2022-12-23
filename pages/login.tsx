@@ -20,12 +20,12 @@ const Login : React.FC<LoginProps> = ({ providers } : LoginProps) => {
     return (
       <>
         <section className='h-screen'>
-          <div className='px-6 h-full text-gray-800'>
-            <div className='flex xljustify-center lgjustify-between justify-center items-center flex-wrap h-full g-6 mx-20'>
-              <div className='grow-0 1xl:w-1/3 shrink-1 md:shrink-0 basis-auto xl:w-1/2 lg:w-1/2 md:w-1/2 mb-12 mdmb-0'>
+          <div className='px-16 h-full text-gray-800'>
+            <div className='flex xl:justify-center justify-center items-center flex-wrap h-full g-6'>
+              <div className='grow-0 shrink-1 2xl:w-1/3 basis-auto xl:w-5/12 lg:w-6/12 md:w-9/12 mb-8 md:mb-0'>
                 <img src='raap.webp' className='w-full' alt='Sample image' />
               </div>
-              <div className='grow-0 1xl:w-1/3 shrink-1 md:shrink-0 basis-auto xl:w-1/2 lg:w-1/2 md:w-1/2 mb-12 mdmb-0 px-20'>
+              <div className='2xl:w-1/4 xl:ml-20 xl:w-5/12 lg:w-5/12 md:w-8/12 mb-8 md:mb-0'>
                 <form>
                   <Signin providers={providers} />
                   <div className='flex items-center my-4 mx-4 before:flex-1 before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5'>
@@ -52,3 +52,4 @@ export const getServerSideProps = async () => {
 }
 
 export default Login
+
