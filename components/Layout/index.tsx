@@ -1,10 +1,22 @@
+import { ReactNode } from 'react'
+
+import ProfileSidebar from '../ProfileSideBar'
 import Sidebar from '../Sidebar'
 
-export const Layout = () => {
+type LayoutProps = {
+  children: ReactNode
+}
+
+const Layout = ({ children } : LayoutProps) => {
   return (
-    <div className = 'h-full flex flex-row justify-start'>
+    <div className='flex flex-row'>
       <Sidebar />
-      <div className = 'h-screen flex-1 p-4 bg-slate-50'>RAPP APP</div>
+      <div className='flex-1'>{children}</div>
+      <div className='flex'>
+        <ProfileSidebar />
+      </div>
     </div>
   )
 }
+
+export default Layout

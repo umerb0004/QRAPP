@@ -18,3 +18,8 @@ export const ReviewIcon = () => <DocumentMinusIcon className={iconClasses} />
 export const ReviewTemplateIcon = () => <DocumentTextIcon className={iconClasses} />
 export const SettingsIcon = () => <Cog6ToothIcon className={iconClasses} />
 export const TagsIcon = () => <TagIcon className={iconClasses} />
+
+export { ChevronRightIcon as RightArrowIcon } from '@heroicons/react/24/solid'
+export { ChevronDownIcon as DropdownIcon } from '@heroicons/react/24/solid'
+export { EnvelopeIcon as EmailIcon } from '@heroicons/react/24/solid'
+export { PencilIcon as EditIcon } from '@heroicons/react/24/solid'
