@@ -1,23 +1,30 @@
-import Head from 'next/head'
-import { ReactElement } from 'react'
+import { getProviders } from 'next-auth/react'
 
-import { Layout } from '../components'
-import { NextPageWithLayout } from './_app'
+import Login from '../components/googleSignin/login'
 
-const Home: NextPageWithLayout = () => (
-  <div>
-    <Head>
-      <title>WRAPP</title>
-      <meta name='description' content='Quaterly Review App' />
-    </Head>
-    <main className='bg-white min-h-screen h-full'>
-      <h1 className='text-black'>WRAPP APP</h1>
-    </main>
-  </div>
-)
+interface HomeProps {
+  providers: {
+    id: string
+    name: string
+  }[]
+}
 
-Home.getLayout = (page: ReactElement) => {
-  return <Layout>{page}</Layout>
+const Home = ({ providers } : HomeProps) => {
+  return (
+    <>
+      <Login providers={providers} />
+    </>
+  )
+}
+
+export const getServerSideProps = async () => {
+  const providers = await getProviders()
+  return {
+    props: {
+      providers,
+    },
+  }
 }
 
 export default Home
+

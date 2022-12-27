@@ -1,17 +1,19 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { PrismaClient } from '@prisma/client'
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   const prisma = new PrismaClient()
-  try{
+  try {
     const user = await prisma.users.findUnique({
-      where:{
-        user_id: String(req.query.userId),
-      }
+      where: {
+        email: String(req.query.email),
+      },
     })
     res.status(200).json(user)
-  } catch(err) {
+  } catch (err) {
     res.status(500).send({ error: 'failed to fetch data', err })
   }
 }
