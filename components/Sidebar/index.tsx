@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 import { menuItems, getNavItemClasses } from '../constants'
 
-const Sidebar = () => {
+export const Sidebar = () => {
   const [toggleCollapse, setToggleCollapse] = useState(false)
   const handleSidebarToggle = () => setToggleCollapse(!toggleCollapse)
 
