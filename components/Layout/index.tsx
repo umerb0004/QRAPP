@@ -1,5 +1,4 @@
 import Sidebar from '../Sidebar'
-import Signout from '../googleSignin/signOut'
 import ProfileSidebar from '../ProfileSideBar'
 
 import { ReactNode } from 'react'
@@ -24,16 +23,14 @@ type userProps =
   | undefined
   | null
 
-const Layout = ({ session, children } : LayoutProps) => {
+const Layout = ({ children } : LayoutProps) => {
   return (
     <div className='h-full flex flex-row justify-start'>
-      <Sidebar />
-      <div className='flex-col'>{children}</div>
-      <div className='flex-1'>
-        <Signout session={session} />
+      <div className='flex-col'>
+        <Sidebar/>
       </div>
+      <div className='flex-1'>{children}</div>
       <ProfileSidebar />
-
     </div>
   )
 }

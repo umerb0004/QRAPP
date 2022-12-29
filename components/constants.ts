@@ -11,6 +11,7 @@ export const menuItems = [
   { id: 8, label: 'Tags', icon: Icons.TagsIcon },
   { id: 9, label: 'Review Template', icon: Icons.ReviewTemplateIcon },
   { id: 10, label: 'Settings', icon: Icons.SettingsIcon },
+
 ]
 
 export const getNavItemClasses = 'flex items-center cursor-pointer hover:bg-light-lighter rounded w-full h-full overflow-hidden whitespace-nowrap'

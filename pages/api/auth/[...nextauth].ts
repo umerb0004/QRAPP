@@ -29,9 +29,9 @@ const authOptions: NextAuthOptions = {
           throw new Error('Email or Password is not Correct')
         }
         return {
-          id: user?.user_id,
-          name: user?.first_name,
-          form_email: user?.email,
+          id: user?.id,
+          name: user?.first_name + ' ' + user?.last_name,
+          email: user?.email,
         }
       },
     }),

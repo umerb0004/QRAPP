@@ -3,7 +3,6 @@ import LoginForm from './loginForm'
 
 import { useSession } from 'next-auth/react'
 
-
 interface LoginProps {
   providers: {
     id: string
@@ -11,7 +10,7 @@ interface LoginProps {
   }[]
 }
 
-const Login = ({ providers } : LoginProps) => {
+const Login = ({ providers }: LoginProps) => {
   const { data: session } = useSession()
 
   if (session) {
@@ -42,4 +41,3 @@ const Login = ({ providers } : LoginProps) => {
 }
 
 export default Login
-

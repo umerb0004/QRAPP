@@ -1,6 +1,8 @@
 import classNames from 'classnames'
 import { useState } from 'react'
 import Image from 'next/image'
+import { SignoutIcon } from '../Icons'
+import { signOut } from 'next-auth/react'
 
 import { menuItems, getNavItemClasses } from '../constants'
 
@@ -49,6 +51,24 @@ const Sidebar = () => {
             </div>
           )
         })}
+        <div className={getNavItemClasses}>
+          <button onClick={() => signOut()}>
+            <div className='flex py-4 px-3 items-center group'>
+              <div className='w-9'>
+                <SignoutIcon />
+              </div>
+              {!toggleCollapse && (
+                <span
+                  className={classNames(
+                    'text-md font-medium group-hover:text-blue-500 group-hover:scale-105 text-neutral-600 pl-2 '
+                  )}
+                >
+                  Sign Out
+                </span>
+              )}
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   )

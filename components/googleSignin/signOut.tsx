@@ -1,4 +1,5 @@
 import { signOut } from 'next-auth/react'
+
 interface SignoutProps {
   session:
     | {
@@ -21,13 +22,13 @@ type userProps =
 const Signout = ({ session } : SignoutProps) => {
   return (
     <>
-      <div className='flex-col text-center mt-4'>
-        <p>Welcome, {session?.user?.name}</p>
+      <div className='flex text-center mt-4 ml-5'>
+        <p>{session?.user?.name}</p>
         <button
-          className='bg-red-500 text-white rounded-full px-2'
+          className='bg-red-500 text-white rounded-full px-1 ml-1'
           onClick={() => signOut()}
         >
-          Sign Out
+          SignOut
         </button>
       </div>
     </>
