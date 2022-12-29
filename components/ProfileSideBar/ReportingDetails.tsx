@@ -7,6 +7,7 @@ import styles from '@styles/ProfileSideBar.module.css'
 
 export type TeamMember = ImageProps & {
   name: string
+  email: string
 }
 
 type Props = {
@@ -44,6 +45,8 @@ const ReportingDetails = ({ team, scroll }: Props) => {
                   <Image
                     src={src}
                     alt={alt}
+                    width={48}
+                    height={48}
                     className={`${styles.img_profile} h-12 w-12`}
                     key={alt}
                   />
@@ -54,16 +57,16 @@ const ReportingDetails = ({ team, scroll }: Props) => {
             </div>
           </>
         ) : (
-          team.map(({ src, alt, name }) => (
+          team.map(({ src, alt, name, email }) => (
             <div className='flex items w-full my-2' key={alt}>
               <Image
                 src={src}
                 alt={alt}
                 className={`${styles.img_profile} h-14 w-14`}
               />
-              <div className='ml-2 w-full items-center font-extralight'>
-                <h2 className='font-medium'>{name}</h2>
-                <h5 className='text-gray-600'>test@devsinc.com</h5>
+              <div className='ml-2 w-full items-center font-extralight overflow-x-hidden'>
+                <h2 className='font-medium truncate'>{name}</h2>
+                <h5 className='text-gray-600 text-sm truncate'>{email}</h5>
               </div>
             </div>
           ))

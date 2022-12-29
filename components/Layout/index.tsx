@@ -1,7 +1,7 @@
+import { ReactNode } from 'react'
+
 import Sidebar from '../Sidebar'
 import ProfileSidebar from '../ProfileSideBar'
-
-import { ReactNode } from 'react'
 
 interface LayoutProps {
   children: ReactNode
@@ -24,15 +24,13 @@ type userProps =
   | null
 
 const Layout = ({ children } : LayoutProps) => {
-  return (
-    <div className='h-full flex flex-row justify-start'>
-      <div className='flex-col'>
-        <Sidebar/>
-      </div>
-      <div className='flex-1'>{children}</div>
-      <ProfileSidebar />
+  return <div className='h-full flex flex-row justify-start'>
+    <div className='flex-col'>
+      <Sidebar/>
     </div>
-  )
+    <div className='flex-1 bg-slate-50'>{children}</div>
+    <ProfileSidebar />
+  </div>
 }
 
 export default Layout

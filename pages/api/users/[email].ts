@@ -5,14 +5,71 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  const { email } = req.query
   const prisma = new PrismaClient()
   try {
-    const user = await prisma.users.findUnique({
+    const userData = await prisma.users.findUnique({
       where: {
-        email: String(req.query.email),
+        email: email as string,
+      },
+      select: {
+        first_name: true,
+        last_name: true,
+        email: true,
+        profile_pic: true,
+        manager_id: true,
+        lead_id: true,
+        Designations: {
+          select: {
+            name: true,
+          },
+        },
       },
     })
-    res.status(200).json(user)
+
+    const manager = await prisma.users.findUnique({
+      where: {
+        id: userData!.manager_id.toString(),
+      },
+      select: {
+        first_name: true,
+        last_name: true,
+        email: true,
+        profile_pic: true,
+      },
+    })
+
+    const lead = await prisma.users.findUnique({
+      where: {
+        id: userData!.manager_id.toString(),
+      },
+      select: {
+        first_name: true,
+        last_name: true,
+        email: true,
+        profile_pic: true,
+      },
+    })
+    const team = await prisma.users.findMany({
+      where: {
+        lead_id: userData!.lead_id,
+      },
+      select: {
+        first_name: true,
+        last_name: true,
+        email: true,
+        profile_pic: true,
+      },
+    })
+
+    const result = {
+      userData,
+      manager,
+      lead,
+      team,
+    }
+
+    res.status(200).json(result)
   } catch (err) {
     res.status(500).send({ error: 'failed to fetch data', err })
   }
