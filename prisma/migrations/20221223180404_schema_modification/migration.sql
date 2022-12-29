@@ -1,10 +1,4 @@
-/*
-  Warnings:
 
-  - You are about to drop the column `tags_name` on the `ReviewTags` table. All the data in the column will be lost.
-  - Added the required column `department_id` to the `Designations` table without a default value. This is not possible if the table is not empty.
-
-*/
 -- AlterTable
 ALTER TABLE `Designations` ADD COLUMN `department_id` INTEGER NOT NULL;
 

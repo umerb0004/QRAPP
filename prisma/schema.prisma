@@ -8,36 +8,36 @@ datasource db {
 }
 
 model Approval {
-  id          Int       @id
-  nominee_id  String    @default(uuid()) @db.VarChar(255)
-  title       String    @default("") @db.VarChar(60)
-  reason      String    @default("") @db.VarChar(2000)
-  status      Boolean   @default(false) @db.TinyInt
-  created_at  DateTime  @default(now())
-  updated_at  DateTime  @updatedAt
-  Nominees    Nominees? @relation(fields: [nominee_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  id         Int       @id
+  nominee_id String    @default(uuid()) @db.VarChar(255)
+  title      String    @default("") @db.VarChar(60)
+  reason     String    @default("") @db.VarChar(2000)
+  status     Boolean   @default(false) @db.TinyInt
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
+  Nominees   Nominees? @relation(fields: [nominee_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 
   @@index([nominee_id])
 }
 
 model Audit {
-  id          Int          @id
-  user_id     String       @default(uuid()) @db.VarChar(255)
+  id          Int      @id
+  user_id     String   @default(uuid()) @db.VarChar(255)
   change_set  Json
   record_id   String
-  record_name String       @default("") @db.VarChar(255)
-  created_at  DateTime     @default(now())
-  Users       Users        @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  record_name String   @default("") @db.VarChar(255)
+  created_at  DateTime @default(now())
+  Users       Users    @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 
   @@index([user_id])
 }
 
 model BiweaklyMeeting {
-  id                 String   @id @default(uuid()) @db.VarChar(255)
-  user_id            String
-  created_at         DateTime @default(now())
-  updated_at         DateTime @updatedAt
-  Users              Users    @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  id         String   @id @default(uuid()) @db.VarChar(255)
+  user_id    String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  Users      Users    @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 
   @@index([user_id])
 }
@@ -59,8 +59,8 @@ model Nominees {
   id             String      @id @default(uuid()) @db.VarChar(255)
   user_review_id String
   title          String      @db.VarChar(100)
-  quater_no      Int         @default(1) @db.UnsignedInt
-  quater_year    Int         @default(2022) @db.UnsignedInt
+  quarter_no      Int         @default(1) @db.UnsignedInt
+  quarter_year    Int         @default(2022) @db.UnsignedInt
   reason         String      @default("") @db.VarChar(2000)
   created_at     DateTime    @default(now())
   deleted_at     DateTime?
@@ -72,29 +72,41 @@ model Nominees {
 }
 
 model ReviewTags {
-  id              Int               @id
-  name            String            @default("") @db.VarChar(35)
-  description     String            @default("") @db.VarChar(2000)
-  created_at      DateTime          @default(now())
-  deleted_at      DateTime?
-  updated_at      DateTime          @updatedAt
-  ReviewTemplates ReviewTemplates[]
-
+  id          Int              @id
+  name        String           @default("") @db.VarChar(35)
+  description String           @default("") @db.VarChar(2000)
+  created_at  DateTime         @default(now())
+  deleted_at  DateTime?
+  updated_at  DateTime         @updatedAt
+  templates   TemplateOnTags[]
 }
 
 model ReviewTemplates {
-  id                 Int         @id
-  review_tags_id     Int
-  user_review_id     String
-  weightage          Float       @default(0.0) @db.Float
-  created_at         DateTime    @default(now())
-  updated_at         DateTime    @updatedAt
-  deleted_at         DateTime?
-  ReviewTags         ReviewTags  @relation(fields: [review_tags_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  UserReviews        UserReviews @relation(fields: [user_review_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  id             Int              @id
+  designation_id Int
+  department_id  Int
+  created_at     DateTime         @default(now())
+  updated_at     DateTime         @updatedAt
+  deleted_at     DateTime?
+  Designations   Designations     @relation(fields: [designation_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  Departments    Departments      @relation(fields: [department_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  tags           TemplateOnTags[]
 
-  @@index([user_review_id])
-  @@index([review_tags_id])
+  @@index([designation_id])
+  @@index([department_id])
+}
+
+model TemplateOnTags {
+  id              Int             @id @default(autoincrement())
+  review_temp_id  Int
+  tag_id          Int
+  weightage       Float           @default(0.0) @db.Float
+  quarter_no      Int
+  created_at      DateTime        @default(now())
+  updated_at      DateTime        @updatedAt
+  deleted_at      DateTime?
+  ReviewTemplates ReviewTemplates @relation(fields: [review_temp_id], references: [id])
+  ReviewTags      ReviewTags      @relation(fields: [tag_id], references: [id])
 }
 
 model Tasks {
@@ -116,21 +128,19 @@ model Tasks {
 }
 
 model UserReviews {
-  id              String            @id @default(uuid()) @db.VarChar(255)
+  id              String     @id @default(uuid()) @db.VarChar(255)
   user_id         String
   marks_received  Json
-  estimated_point Float             @default(0.0) @db.Float
-  is_approved     Boolean           @default(false) @db.TinyInt
+  estimated_point Float      @default(0.0) @db.Float
+  is_approved     Boolean    @default(false) @db.TinyInt
   reviewed_by_id  Int
-  quater_no       Int               @default(1) @db.UnsignedInt
-  on_leave        Boolean           @default(false) @db.TinyInt
-  created_at      DateTime          @default(now())
-  updated_at      DateTime          @updatedAt
+  quarter_no      Int        @default(1) @db.UnsignedInt
+  created_at      DateTime   @default(now())
+  updated_at      DateTime   @updatedAt
   Feedback        Feedback[]
   Nominees        Nominees[]
-  ReviewTemplates ReviewTemplates[]
   Tasks           Tasks[]
-  Users           Users             @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  Users           Users      @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 
   @@index([user_id])
 }
@@ -160,27 +170,30 @@ model Users {
   UserReviews          UserReviews[]
   Departments          Departments       @relation(fields: [department_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   Designations         Designations      @relation(fields: [designation_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
   @@index([department_id])
   @@index([designation_id])
 }
 
 model Departments {
-  id                   Int               @id
-  name                 String            @default("") @db.VarChar(30)
-  created_at           DateTime          @default(now())
-  deleted_at           DateTime?
-  updated_at           DateTime          @updatedAt
-  Users                Users[]
-  Designations         Designations[]
+  id              Int               @id
+  name            String            @default("") @db.VarChar(30)
+  created_at      DateTime          @default(now())
+  deleted_at      DateTime?
+  updated_at      DateTime          @updatedAt
+  Users           Users[]
+  Designations    Designations[]
+  ReviewTemplates ReviewTemplates[]
 }
 
 model Designations {
-  id                   Int               @id
-  name                 String            @default("") @db.VarChar(30)
-  department_id        Int
-  created_at           DateTime          @default(now())
-  deleted_at           DateTime?
-  updated_at           DateTime          @updatedAt
-  Users                Users[]
-  Departments          Departments       @relation(fields: [department_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  id              Int               @id
+  name            String            @default("") @db.VarChar(30)
+  department_id   Int
+  created_at      DateTime          @default(now())
+  deleted_at      DateTime?
+  updated_at      DateTime          @updatedAt
+  Users           Users[]
+  Departments     Departments       @relation(fields: [department_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  ReviewTemplates ReviewTemplates[]
 }
