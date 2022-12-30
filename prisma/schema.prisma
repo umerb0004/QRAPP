@@ -59,8 +59,8 @@ model Nominees {
   id             String      @id @default(uuid()) @db.VarChar(255)
   user_review_id String
   title          String      @db.VarChar(100)
-  quarter_no      Int         @default(1) @db.UnsignedInt
-  quarter_year    Int         @default(2022) @db.UnsignedInt
+  quarter_no     Int         @default(1) @db.UnsignedInt
+  quarter_year   Int         @default(2022) @db.UnsignedInt
   reason         String      @default("") @db.VarChar(2000)
   created_at     DateTime    @default(now())
   deleted_at     DateTime?
@@ -196,4 +196,25 @@ model Designations {
   Users           Users[]
   Departments     Departments       @relation(fields: [department_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   ReviewTemplates ReviewTemplates[]
+}
+
+model Permissions {
+  id              Int               @id
+  key             String            @default("") @db.VarChar(30)
+  created_at      DateTime          @default(now())
+  deleted_at      DateTime?
+  updated_at      DateTime          @updatedAt
+  UserPermissions UserPermissions[]
+}
+
+model UserPermissions {
+  id              Int               @id
+  designation_id  Int
+  permission_id   Int
+  created_at      DateTime          @default(now())
+  deleted_at      DateTime?
+  updated_at      DateTime          @updatedAt
+  Permissions     Permissions       @relation(fields: [permission_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([permission_id])
 }
