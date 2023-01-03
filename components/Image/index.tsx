@@ -7,16 +7,17 @@ export type image = ImageProps & {
   w?: string
 }
 
-const ProfileImage = ({src, alt, h='h-12', w='w-16'}: image) => {
-  return <div className={`${h} ${w}`}>
+const ProfileImage = ({ src, alt, h='h-12', w='w-16', fill }: image) => (
+  <div className={`${h} ${w} ${fill && 'relative'}`}>
     <Image
       src={src}
       alt={alt}
-      width={48}
-      height={48}
-      className={`${styles.img_profile} w-full h-full`}
+      width={fill ? undefined : 48}
+      height={fill ? undefined : 48}
+      className={`${styles.img_profile} w-full h-full ${fill && 'object-contain'}`}
+      fill={fill}
     />
   </div>
-}
+)
 
 export default ProfileImage
