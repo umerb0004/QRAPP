@@ -11,10 +11,9 @@ import '../styles/globals.css'
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode
-}// our modal ref
+}
+
 let globalModalRef: React.Ref<string>
-
-
 
 type AppPropsWithLayout<P> = AppProps<P> & {
   Component: NextPageWithLayout<P>
@@ -30,17 +29,14 @@ const App = ({
   }, [])
   
   if (Component.getLayout) {
-    return (
-    <SessionProvider session={pageProps.session}>
-        {Component.getLayout(<Component {...pageProps} />)}
-      </SessionProvider>
-    )
-  }        
-  return (
-    <SessionProvider session={pageProps.session}>
-      <Component {...pageProps} />
+    return <SessionProvider session={pageProps.session}>
+      {Component.getLayout(<Component {...pageProps} />)}
     </SessionProvider>
-  )
+  }        
+
+  return <SessionProvider session={pageProps.session}>
+    <Component {...pageProps} />
+  </SessionProvider>
 }
 
 export default App

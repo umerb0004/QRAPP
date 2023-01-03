@@ -1,6 +1,7 @@
 import { Modal } from 'antd'
 
-import { ModalProps } from '../../types/modal_props'
+import { ModalProps } from '@src/typings'
+
 
 export const ModalComponent = (propsValues: ModalProps) => {
   const {

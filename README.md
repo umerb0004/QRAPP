@@ -90,8 +90,8 @@ Create a .env file in the root of your project and add following variables
 - NEXT_PUBLIC_CRONJOB_API =
 ## Notes
 - Created DB schema
-- Implemented Sign In with Goolge Functionality.
-- Created UI for Login Page
+- Implemented Sign In with Google Functionality.
+- Created UI for Sign In Page
 - Created UI of Sidebar.
 - Sent Email to Reporting To.
 - Added ESLint and Stylelint for consistency and better code quality.

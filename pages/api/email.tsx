@@ -7,8 +7,8 @@ const { NEXT_PUBLIC_SG_API_KEY, NEXT_PUBLIC_FROM_EMAIL } = process.env
 const leads = ['test@devsinc.com']
 sendMail.setApiKey(NEXT_PUBLIC_SG_API_KEY)
 
-export default function handler() {
-  cron.schedule('* * * * *', async function () {
+const handler = () => {
+  cron.schedule('* * * * *', async () => {
     try {
       const emailInfo = {
         to: leads,
@@ -23,3 +23,5 @@ export default function handler() {
     }
   })
 }
+
+export default handler

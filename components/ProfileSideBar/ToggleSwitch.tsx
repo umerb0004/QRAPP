@@ -11,11 +11,7 @@ type Props = {
 const ToggleSwitch = ({ enabled, setEnabled }: Props) => {
   return (
     <div className='flex flex-row justify-center items-center'>
-      <p
-        className={`${
-          enabled ? 'text-gray-400' : 'text-gray-600'
-        } font-medium text-md`}
-      >
+      <p className={`${enabled ? 'text-gray-400' : 'text-gray-600'} font-medium text-md`}>
         Me
       </p>
       <Switch
@@ -29,11 +25,7 @@ const ToggleSwitch = ({ enabled, setEnabled }: Props) => {
           pointer-events-none inline-block h-7 w-7 transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
         />
       </Switch>
-      <p
-        className={`${
-          enabled ? 'text-gray-600' : 'text-gray-400'
-        } font-medium text-md`}
-      >
+      <p className={`${enabled ? 'text-gray-600' : 'text-gray-400'} font-medium text-md`}>
         My Team
       </p>
     </div>

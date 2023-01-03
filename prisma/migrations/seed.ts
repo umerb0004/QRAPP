@@ -1,11 +1,11 @@
 import { PrismaClient } from '@prisma/client'
 
-import { departments } from '../../dummyData/department'
-import { designations } from '../../dummyData/designation'
+import { departments } from '../../dummyData/departments'
+import { designations } from '../../dummyData/designations'
 import { reviewTemplate } from '../../dummyData/reviewTemplates'
 import { tags } from '../../dummyData/tags'
 import { templateTags } from '../../dummyData/templateTags'
-import { userReview } from '../../dummyData/userReview'
+import { userReviewes } from '../../dummyData/userReviewes'
 import { users } from '../../dummyData/users'
 
 const prisma = new PrismaClient()
@@ -29,7 +29,7 @@ const main = async () => {
   })
 
   await prisma.userReviews.createMany({
-    data: userReview
+    data: userReviewes
   })
 
   await prisma.reviewTemplates.createMany({

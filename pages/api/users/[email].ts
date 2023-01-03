@@ -7,6 +7,7 @@ export default async function handler(
 ) {
   const { email } = req.query
   const prisma = new PrismaClient()
+  
   try {
     const userData = await prisma.users.findUnique({
       where: {
@@ -50,6 +51,7 @@ export default async function handler(
         profile_pic: true,
       },
     })
+    
     const team = await prisma.users.findMany({
       where: {
         lead_id: userData!.lead_id,

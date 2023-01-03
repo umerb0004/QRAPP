@@ -1,4 +1,4 @@
-export const userReview = [
+export const userReviewes = [
   {
     id: '1',
     user_id: '1',

@@ -5,30 +5,10 @@ import useSwr from 'swr'
 
 import ManagerDetails from './ManagerDetails'
 import ProfileDetails from './ProfileDetails'
-import ReportingDetails, { type TeamMember } from './ReportingDetails'
+import ReportingDetails from './ReportingDetails'
 import ToggleSwitch from './ToggleSwitch'
+import { UserDetails, UserInfo } from '@src/typings'
 
-import profileImage from '@public/profile.png'
-
-type details = {
-  first_name: string
-  last_name: string
-  profile_pic: string
-  email: string
-}
-
-interface response {
-  lead: details
-  manager: details
-  team: details[]
-  userData: details & {
-    manager_id: number
-    lead_id: number
-    Designations: {
-      name: string
-    }
-  }
-}
 
 const ProfileSidebar = () => {
   const [enabled, setEnabled] = useState(false)
@@ -40,15 +20,15 @@ const ProfileSidebar = () => {
 
   const scroll = () => scrollRef.current?.scrollIntoView()
   const fetcher = (url: string) => axios.get(url).then((res) => res.data)
-  const { data, isLoading } = useSwr<response>(`/api/users/${email}`, fetcher)
+  const { data, isLoading } = useSwr<UserDetails>(`/api/users/${email}`, fetcher)
 
   if (isLoading) return <h1>loading</h1>
 
   const { lead, manager, team, userData } = data!
 
-  const teamMembers: TeamMember[] = team.map((team, index) => {
+  const teamMembers: UserInfo[] = team.map((team, index) => {
     return {
-      src: profileImage,
+      src: team.profile_pic,
       alt: `profile image ${index}`,
       name: `${team.first_name} ${team.last_name}`,
       email: team.email,
@@ -57,7 +37,7 @@ const ProfileSidebar = () => {
 
   return <div className='max-w-xs h-full min-h-screen text-black text-center pr-3 bg-slate-50 pt-2'>
     <ProfileDetails
-      src={profileImage}
+      src={userData.profile_pic}
       alt='profile image'
       name={`${userData.first_name} ${userData.last_name}`}
       email={userData.email}
@@ -65,7 +45,7 @@ const ProfileSidebar = () => {
     />
     <ToggleSwitch enabled={enabled} setEnabled={setEnabled} />
     <ManagerDetails
-      src={profileImage}
+      src={manager.profile_pic}
       alt='manager profile image'
       name={`${manager.first_name} ${manager.last_name}`}
       email={manager.email}
@@ -75,11 +55,11 @@ const ProfileSidebar = () => {
       <ReportingDetails team={teamMembers} scroll={scroll} />
     ) : (
       <ManagerDetails
-        src={profileImage}
+        src={lead.profile_pic}
         alt='manager profile image'
         name={`${lead.first_name} ${lead.last_name}`}
         email={lead.email}
-        designation='Reporting to'
+        designation='Reporting To'
       />
     )}
     <div ref={scrollRef} />

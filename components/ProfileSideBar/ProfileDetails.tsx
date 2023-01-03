@@ -1,16 +1,11 @@
-import Image, { ImageProps } from 'next/image'
+import ProfileImage from '../Image'
+import { UserInfo } from '@src/typings'
 
 import styles from '@styles/ProfileSideBar.module.css'
 
-type Props = ImageProps & {
-  name: string
-  email: string
-  designation: string
-}
-
-const ProfileDetails = ({ src, alt, name, email, designation } : Props) => (
+const ProfileDetails = ({ src, alt, name, email, designation }: UserInfo) => (
   <div className={`${styles.card} flex flex-col items-center`}>
-    <Image src={src} alt={alt} className={`${styles.img_profile} h-40 w-40`} />
+    <ProfileImage src={src} alt={alt} h={'w-40'} w={'w-40'} />
     <h1 className='font-medium text-xl mt-1.5 text-neutral-600 capitalize'>{name}</h1>
     <div className='items-center my-1 font-extralight	'>
       <p className='text-gray-600'>{email}</p>

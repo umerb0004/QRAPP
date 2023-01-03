@@ -18,8 +18,8 @@ export const ReportIcon = () => <PresentationChartBarIcon className={iconClasses
 export const ReviewIcon = () => <DocumentMinusIcon className={iconClasses} />
 export const ReviewTemplateIcon = () => <DocumentTextIcon className={iconClasses} />
 export const SettingsIcon = () => <Cog6ToothIcon className={iconClasses} />
-export const TagsIcon = () => <TagIcon className={iconClasses} />
 export const SignoutIcon = () => <ArrowUpOnSquareIcon className={iconClasses} />
+export const TagsIcon = () => <TagIcon className={iconClasses} />
 
 export { ChevronRightIcon as RightArrowIcon } from '@heroicons/react/24/solid'
 export { ChevronDownIcon as DropdownIcon } from '@heroicons/react/24/solid'

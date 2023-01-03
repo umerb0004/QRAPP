@@ -58,14 +58,21 @@ export const designations = [
   {
     id: 9,
     name: 'SQA',
-    department_id: 1,
+    department_id: 6,
     created_at: '2015-03-25T12:00:00Z',
     updated_at: '2015-03-25T12:00:00Z'
   },
   {
     id: 10,
     name: 'ASQA',
-    department_id: 1,
+    department_id: 6,
+    created_at: '2015-03-25T12:00:00Z',
+    updated_at: '2015-03-25T12:00:00Z'
+  },
+  {
+    id: 11,
+    name: 'SSQA',
+    department_id: 6,
     created_at: '2015-03-25T12:00:00Z',
     updated_at: '2015-03-25T12:00:00Z'
   },
