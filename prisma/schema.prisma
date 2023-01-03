@@ -1,17 +1,17 @@
 generator client {
-  provider = 'prisma-client-js'
+  provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = 'mysql'
-  url      = env('DATABASE_URL')
+  provider = "mysql"
+  url      = env("DATABASE_URL")
 }
 
 model Approval {
   id         Int       @id
   nominee_id String    @default(uuid()) @db.VarChar(255)
-  title      String    @default('') @db.VarChar(60)
-  reason     String    @default('') @db.VarChar(2000)
+  title      String    @default("") @db.VarChar(60)
+  reason     String    @default("") @db.VarChar(2000)
   status     Boolean   @default(false) @db.TinyInt
   created_at DateTime  @default(now())
   updated_at DateTime  @updatedAt
@@ -25,7 +25,7 @@ model Audit {
   user_id     String   @default(uuid()) @db.VarChar(255)
   change_set  Json
   record_id   String
-  record_name String   @default('') @db.VarChar(255)
+  record_name String   @default("") @db.VarChar(255)
   created_at  DateTime @default(now())
   Users       Users    @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 
@@ -47,7 +47,7 @@ model Feedback {
   user_review_id String
   reviewed_by_id Int
   rating         Float       @default(0.0) @db.Float
-  reason         String      @default('') @db.VarChar(2000)
+  reason         String      @default("") @db.VarChar(2000)
   created_at     DateTime    @default(now())
   updated_at     DateTime    @updatedAt
   UserReviews    UserReviews @relation(fields: [user_review_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
@@ -61,7 +61,7 @@ model Nominees {
   title          String      @db.VarChar(100)
   quarter_no     Int         @default(1) @db.UnsignedInt
   quarter_year   Int         @default(2022) @db.UnsignedInt
-  reason         String      @default('') @db.VarChar(2000)
+  reason         String      @default("") @db.VarChar(2000)
   created_at     DateTime    @default(now())
   deleted_at     DateTime?
   updated_at     DateTime    @updatedAt
@@ -73,8 +73,8 @@ model Nominees {
 
 model ReviewTags {
   id          Int              @id
-  name        String           @default('') @db.VarChar(35)
-  description String           @default('') @db.VarChar(2000)
+  name        String           @default("") @db.VarChar(35)
+  description String           @default("") @db.VarChar(2000)
   created_at  DateTime         @default(now())
   deleted_at  DateTime?
   updated_at  DateTime         @updatedAt
@@ -117,7 +117,7 @@ model Tasks {
   duration       DateTime    @db.Date
   rating         Float       @default(0.0) @db.Float
   status         Boolean     @default(false) @db.TinyInt
-  type           String      @default('') @db.VarChar(255)
+  type           String      @default("") @db.VarChar(255)
   created_at     DateTime    @default(now())
   updated_at     DateTime    @updatedAt
   UserReviews    UserReviews @relation(fields: [user_review_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
@@ -147,20 +147,20 @@ model UserReviews {
 
 model Users {
   id                   String            @id @default(uuid()) @db.VarChar(255)
-  first_name           String            @default('') @db.VarChar(30)
-  last_name            String            @default('') @db.VarChar(30)
+  first_name           String            @default("") @db.VarChar(30)
+  last_name            String            @default("") @db.VarChar(30)
   joining_date         DateTime          @db.Date
   department_id        Int
   designation_id       Int
   email                String            @unique @db.VarChar(100)
-  password             String            @default('') @db.VarChar(200)
+  password             String            @default("") @db.VarChar(200)
   employee_id          Int               @db.UnsignedInt
   lead_id              Int               @db.UnsignedInt
   manager_id           Int               @db.UnsignedInt
   on_leave             Boolean           @default(false) @db.TinyInt
   partial_joining_date DateTime          @db.Date
   review_date          DateTime          @db.Date
-  profile_pic          String            @default('') @db.VarChar(1000)
+  profile_pic          String            @default("") @db.VarChar(1000)
   created_at           DateTime          @default(now())
   deleted_at           DateTime?
   updated_at           DateTime          @updatedAt
@@ -177,7 +177,7 @@ model Users {
 
 model Departments {
   id              Int               @id
-  name            String            @default('') @db.VarChar(30)
+  name            String            @default("") @db.VarChar(30)
   created_at      DateTime          @default(now())
   deleted_at      DateTime?
   updated_at      DateTime          @updatedAt
@@ -188,7 +188,7 @@ model Departments {
 
 model Designations {
   id              Int               @id
-  name            String            @default('') @db.VarChar(30)
+  name            String            @default("") @db.VarChar(30)
   department_id   Int
   created_at      DateTime          @default(now())
   deleted_at      DateTime?
@@ -200,7 +200,7 @@ model Designations {
 
 model Permissions {
   id              Int               @id
-  key             String            @default('') @db.VarChar(30)
+  key             String            @default("") @db.VarChar(30)
   created_at      DateTime          @default(now())
   deleted_at      DateTime?
   updated_at      DateTime          @updatedAt
