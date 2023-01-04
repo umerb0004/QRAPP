@@ -1,5 +1,4 @@
 import { getProviders } from 'next-auth/react'
-
 import Signin from '../components/Signin'
 import { SigninProps } from '@src/typings'
 

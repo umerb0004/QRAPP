@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap');
+
 html,
 
 body {
@@ -9,6 +11,14 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+.set-font-family-poppins {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+.align-items-center {
+  align-items: center !important;
 }
 
 a {
@@ -56,6 +66,41 @@ a {
 
 .content {
   padding: 8px 20px 50px 20px;
+}
+
+.card {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+}
+
+.card h1 {
+  font-size: 50px;
+}
+
+.custom-card {
+  border-radius: 15px;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+  padding: 35px;
+  text-align: left;
+  width: 95%;
+}
+
+.card h2 {
+  font-size: 25px;
+  margin: 10px;
+  padding: 15px;
+}
+
+button:hover {
+  background-color: #16bcb2c1;
+  transition: 0.4s;
+  transform: scale(1.05);
+}
+
+button:active {
+  background-color: lightgreen;
 }
 
 @media (prefers-color-scheme: dark) {
