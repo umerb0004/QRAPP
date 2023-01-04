@@ -8,7 +8,7 @@ import { menuItems } from './menu'
 import { SignoutIcon } from '../Icons'
 
 
-const MenuSidebar = () => {
+export const MenuSidebar = () => {
   const [toggleCollapse, setToggleCollapse] = useState(false)
   const handleSidebarToggle = () => setToggleCollapse(!toggleCollapse)
 
