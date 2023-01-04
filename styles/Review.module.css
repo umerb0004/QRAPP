@@ -1,0 +1,36 @@
+.reviews_page {
+  display: flex;
+}
+
+.review_table_actions {
+  display: flex;
+  justify-content: space-between;
+  width: 60px;
+}
+
+.paging_nav {
+  padding: 35px;
+  width: 100%;
+}
+
+.pagination_page_number {
+  background-color: rgba(190, 193, 200, 0.47);
+  border-radius: 5px;
+  margin: 0px 10px 10px 0px;
+  padding: 3px;
+  text-align: center;
+  width: 20px;
+}
+
+.pagination_nav {
+  display: flex;
+  margin-right: 20px;
+  position: absolute;
+  right: 0;
+}
+
+.active_page {
+  font-weight: bold;
+  font-size: larger;
+  text-decoration:underline;
+}
