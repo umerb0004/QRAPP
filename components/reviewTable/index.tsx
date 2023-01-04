@@ -5,9 +5,9 @@ import PaginatedTable from './pagination'
 export function Table(props) {
   const usersReviews = props.data
 
-  return (
+  return <>
     <div className='h-screen flex-1 p-4 bg-slate-50'>
-      <h3 className="font-medium leading-tight text-3xl mt-0 mb-2 text-black-600 p-2">Reviews</h3>
+      <h3 className='font-medium leading-tight text-3xl mt-0 mb-2 text-black-600 p-2'>Reviews</h3>
       <div className='relative shadow-md sm:rounded-lg'>
         <div className='pb-4 dark:bg-gray-900'>
           <div className='relative float-right p-2'>
@@ -59,5 +59,5 @@ export function Table(props) {
         </table>
       </div>
     </div>
-  )
+  </>
 }

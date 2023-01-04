@@ -14,11 +14,14 @@
     "@heroicons/react": "^2.0.13",
     "@prisma/client": "^4.7.1",
     "@sendgrid/mail": "^7.7.0",
+    "@types/date-fns": "^2.6.0",
     "@types/node": "18.11.10",
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.9",
     "axios": "^1.2.1",
+    "chart.js": "^4.1.0",
     "classnames": "^2.3.2",
+    "date-fns": "^2.29.3",
     "dotenv": "^16.0.3",
     "antd": "^5.0.7",
     "eslint": "8.28.0",
@@ -29,9 +32,11 @@
     "next-auth": "^4.18.0",
     "node-cron": "^3.0.2",
     "react": "18.2.0",
+    "react-chartjs-2": "^5.0.1",
     "react-dom": "18.2.0",
-    "swr": "^2.0.0",
-    "react-paginate": "^8.1.4"
+    "react-minimal-pie-chart": "^8.4.0",
+    "react-paginate": "^8.1.4",
+    "swr": "^2.0.0"
   },
   "devDependencies": {
     "@types/node": "^18.11.10",

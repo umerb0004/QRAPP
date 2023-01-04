@@ -3,7 +3,7 @@ import * as Icons from '../Icons'
 export const menuItems = [
   { id: 1, label: 'Dashboard', icon: Icons.DashboardIcon, link: '/' },
   { id: 2, label: 'Teams', icon: Icons.PeopleIcon, link: '/' },
-  { id: 3, label: 'Pending Reviews', icon: Icons.ReviewIcon, link: '/' },
+  { id: 3, label: 'Pending Reviews', icon: Icons.ReviewIcon, link: '/pendingReview' },
   { id: 4, label: 'Approved Reviews', icon: Icons.ReportIcon, link: '/review' },
   { id: 5, label: 'Bi-Weekly Syncs', icon: Icons.HomeIcon, link: '/' },
   { id: 6, label: 'Awards', icon: Icons.AwardIcon, link: '/' },

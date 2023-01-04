@@ -4,10 +4,22 @@ import { PrismaClient } from '@prisma/client'
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const prisma = new PrismaClient()
-    const getUsers = await prisma.users.findMany()
-    return res.status(200).send(getUsers)
-  }
-  catch(err) {
+    const getUsers = await prisma.users.findMany({
+      select: {
+        id: true,
+        first_name: true,
+        email: true,
+        joining_date: true,
+        profile_pic: true,
+        Designations: {
+          select: {
+            name: true,
+          },
+        },
+      },
+    })
+    res.status(200).json(getUsers)
+  } catch (err) {
     res.status(500).send({ error: 'failed to fetch data', err })
   }
 }

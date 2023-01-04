@@ -21,6 +21,6 @@
       "@src/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/test.tsx", "pages/login.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/pendingReviews/chart.tsx", "components/googleSignin/test.tsx"],
   "exclude": ["node_modules"]
 }

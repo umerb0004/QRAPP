@@ -8,9 +8,7 @@ export interface SigninProps {
 interface SignoutProps {
   session:
     | {
-        user?: UserInfo
-        | undefined
-        | null
+        user?: UserInfo | undefined | null
         expires?: string | undefined | null
       }
     | undefined
@@ -44,24 +42,49 @@ interface UserDetails {
 }
 
 export interface ModalProps {
-  component?: React.FC<any>;
-  props?: { [key: string]: unknown };
-  isVisible?: boolean;
-  closable?: boolean;
-  onClose?: Function;
-  closeModal?: Function;
-  width?: number;
-  title?: string;
-  className?: string;
-  enableBottomSheet?: boolean;
-  fullScreen?: boolean;
-  closeIcon?: boolean;
-  headingClassName?: boolean;
-  headingComponent?: React.FC<any>;
-  bottomSheetFooter?: React.FC<any>;
-  bottomSheetClassName?: string;
-  modalFooter?: JSX.Element[];
-  closeable?: boolean;
-  centered?: boolean;
-  children?: any;
+  component?: React.FC<unknown>
+  props?: { [key: string]: unknown }
+  isVisible?: boolean
+  closable?: boolean
+  onClose?: Function
+  closeModal?: Function
+  width?: number
+  title?: string
+  className?: string
+  enableBottomSheet?: boolean
+  fullScreen?: boolean
+  closeIcon?: boolean
+  headingClassName?: boolean
+  headingComponent?: React.FC<unknown>
+  bottomSheetFooter?: React.FC<unknown>
+  bottomSheetClassName?: string
+  modalFooter?: JSX.Element[]
+  closeable?: boolean
+  centered?: boolean
+  children?: unknown
+}
+export interface chartProps {
+  labels: string[]
+  datasets: {
+    data: number[]
+    backgroundColor: string[]
+  }[]
+}
+
+export interface usersProps {
+  id: string
+  first_name: string
+  last_name: string
+  joining_date: string
+  department_id: number
+  Designations: { name: stirng }
+  email: string
+  employee_id: number
+  lead_id: number
+  manager_id: number
+  on_leave: boolean
+  partial_joining_date: string
+  profile_pic: string
+  created_at: string
+  updated_at: string
 }

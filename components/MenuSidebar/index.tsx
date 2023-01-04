@@ -3,12 +3,12 @@ import Image from 'next/image'
 import { signOut } from 'next-auth/react'
 import { useState } from 'react'
 
-import { MenuLabel, NavItem } from './style'
 import { menuItems } from './menu'
 import { SignoutIcon } from '../Icons'
 
+import { MenuLabel, NavItem } from './style'
 
-export const MenuSidebar = () => {
+const MenuSidebar = () => {
   const [toggleCollapse, setToggleCollapse] = useState(false)
   const handleSidebarToggle = () => setToggleCollapse(!toggleCollapse)
 
@@ -33,16 +33,16 @@ export const MenuSidebar = () => {
       <div className='flex flex-col items-start '>
         {menuItems.map(({ icon: Icon, ...menu }) => (
           <div className={NavItem} key={menu.id}>
-            <div className='flex py-4 px-2 items-center group'>
-              <div className='w-9'>
-                <Icon />
+            <a href={menu.link}>
+              <div className='flex py-4 px-2 items-center group'>
+                <div className='w-9'>
+                  <Icon />
+                </div>
+                {!toggleCollapse && (
+                  <span className={classNames(MenuLabel)}>{menu.label}</span>
+                )}
               </div>
-              {!toggleCollapse && (
-                <span className={classNames(MenuLabel)}>
-                  {menu.label}
-                </span>
-              )}
-            </div>
+            </a>
           </div>
         ))}
         <div className={NavItem}>
@@ -52,9 +52,7 @@ export const MenuSidebar = () => {
                 <SignoutIcon />
               </div>
               {!toggleCollapse && (
-                <span className={classNames(MenuLabel)}>
-                  Sign Out
-                </span>
+                <span className={classNames(MenuLabel)}>Sign Out</span>
               )}
             </div>
           </button>

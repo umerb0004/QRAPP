@@ -1,7 +1,6 @@
 
-import React, { useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
-import ReactPaginate from 'react-paginate';
+import { useState } from 'react'
+import ReactPaginate from 'react-paginate'
 import { RightArrowIcon, LeftArrowIcon } from '../Icons'
 
 import styles from '../../styles/Review.module.css'
@@ -11,18 +10,17 @@ export default function PaginatedTable(props, { rowsPerPage = 8 }) {
   const reviews = props.data
   const [rowsOffset, setrowsOffset] = useState(0)
 
-  const endOffset = rowsOffset + rowsPerPage;
+  const endOffset = rowsOffset + rowsPerPage
 
   const currentItems = reviews.slice(rowsOffset, endOffset)
   const pageCount = Math.ceil(reviews.length / rowsPerPage)
 
-  const handlePageClick = (event) => {
-    const newOffset = (event.selected * rowsPerPage) % reviews.length;
+  const handlePageClick = event => {
+    const newOffset = (event.selected * rowsPerPage) % reviews.length
     setrowsOffset(newOffset)
   }
 
-  return (
-    <>
+  return <>
       <RenderRow current_row={currentItems} />
       <div className={styles.paging_nav}>
         <ReactPaginate
@@ -38,15 +36,11 @@ export default function PaginatedTable(props, { rowsPerPage = 8 }) {
           previousLabel={<LeftArrowIcon />}
         />
       </div>
-    </>
-  );
+  </>
 }
 
-function RenderRow(props) {
-  const reviews = props.current_row
-  const rows = reviews.map((review) => {
-    return <TableRow data={review} key={review.id} />
-  })
-
-  return rows
-}
+const RenderRow = props => (
+  props.current_row.map(review => ( 
+    <TableRow data={review} key={review.id} />
+  ))
+)
