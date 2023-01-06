@@ -8,9 +8,7 @@ import { SigninProps } from '@src/typings'
 const Signin = ({ providers }: SigninProps) => {
   const { data: session } = useSession()
 
-  if (session) {
-    return <Layout session={session}> </Layout>
-  }
+  if (session) return <Layout />
   
   return <>
     <section className='h-screen'>

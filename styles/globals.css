@@ -5,7 +5,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap');
 
 html,
-
 body {
   padding: 0;
   margin: 0;
@@ -13,17 +12,12 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
-.set-font-family-poppins {
-  font-family: 'Poppins', sans-serif !important;
-}
-
 .align-items-center {
-  align-items: center !important;
+  @apply items-center;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+  @apply text-inherit no-underline
 }
 
 * {
@@ -31,76 +25,51 @@ a {
 }
 
 .ant-modal-header {
-  background: #fff;
-  border-bottom: 1px solid #f0f0f0;
-  border-radius: 2px 2px 0 0;
-  color: rgba(0, 0, 0, 0.85);
-  padding: 16px 24px;
+  @apply bg-[#fff] border-b-[1px] border-solid border-[#f0f0f0] marker:rounded-t-[2px] rounded-r-[2px] text-[#000000] opacity-[0.8] py-[16px] px-[24px]
 }
 
 .ant-modal-body {
-  padding: 0px !important;
-  overflow: hidden;
+  @apply !p-0 overflow-hidden
 }
 
 .ant-modal-content {
-  padding: 0px !important;
+  @apply !p-0
 }
 
 .modal-position {
-  position: relative;
+  @apply relative
 }
 
 .modal-bottom {
-  align-items: center;
-  background: white;
-  bottom: 0;
-  border-top: 0.5px solid lightgray;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  left: 0;
-  padding: 5px 10px;
-  width: 100%;
+  @apply items-center bg-white bottom-0 border-t-[0.5px] border-solid border-[#d3d3d3] flex flex-row justify-end left-0 py-[5px] px-[10px] w-full
 }
 
 .content {
-  padding: 8px 20px 50px 20px;
+  @apply pt-[8px] pr-[20px] pb-[50px] pl-[20px]
 }
 
 .card {
-  background-color: white;
-  border-radius: 15px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  transition: 0.3s;
+  @apply bg-white rounded-[15px] shadow-[0px_4px_8px_0px_rgba(0,0,0,0.2)] 
 }
 
 .card h1 {
-  font-size: 50px;
+  @apply text-[50px]
 }
 
 .custom-card {
-  border-radius: 15px;
-  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
-  padding: 35px;
-  text-align: left;
-  width: 95%;
+  @apply bg-white rounded-[15px] shadow-[0px_4px_8px_0px_rgb(0,0,0,20%)] p-[35px] delay-[0.3ms]
 }
 
 .card h2 {
-  font-size: 25px;
-  margin: 10px;
-  padding: 15px;
+  @apply text-[25px] m-[10px] p-[15px]
 }
 
 button:hover {
-  background-color: #16bcb2c1;
-  transition: 0.4s;
-  transform: scale(1.05);
+  @apply bg-[#16bcb2c1] delay-[0.4ms] transform scale-[1.05]
 }
 
 button:active {
-  background-color: lightgreen;
+  @apply bg-[#90ee90]
 }
 
 @media (prefers-color-scheme: dark) {

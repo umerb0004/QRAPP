@@ -6,7 +6,6 @@ import { SessionProvider } from 'next-auth/react'
 
 import { registerModal } from '../utils/modal_utils'
 
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../node_modules/@fortawesome/fontawesome-free/css/all.css'
 import '../styles/globals.css'
 

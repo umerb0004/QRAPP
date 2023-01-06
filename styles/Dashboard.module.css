@@ -1,15 +1,11 @@
-.Lottie{
-  margin: '0px';
-  z-index: 100000;
+.Lottie {
+  @apply m-[0px] z-[100000]
 }
 
-.paragraph{
-  font-size: 35px;
-  font-weight: 140 ;
-  font-family: 'system-ui';
+.paragraph {
+  @apply font-[35px] font-[140] font-sans
 }
 
-.pending{
-  font-family: 'system-ui';
-  font-weight: 300;
+.pending {
+  @apply font-[300] font-sans
 }
