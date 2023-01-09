@@ -52,6 +52,10 @@ a {
   @apply bg-white rounded-[15px] shadow-[0px_4px_8px_0px_rgba(0,0,0,0.2)] 
 }
 
+.card-comp {
+ @apply p-[70px]
+}
+
 .card h1 {
   @apply text-[50px]
 }
@@ -61,14 +65,14 @@ a {
 }
 
 .card h2 {
-  @apply text-[25px] m-[10px] p-[15px]
+  @apply text-[30px] m-[10px] p-[15px]
 }
-
-button:hover {
+ 
+.pending-component button:hover {
   @apply bg-[#16bcb2c1] delay-[0.4ms] transform scale-[1.05]
 }
 
-button:active {
+.pending-component button:active {
   @apply bg-[#90ee90]
 }
 

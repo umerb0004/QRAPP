@@ -19,13 +19,12 @@
     "@types/node": "18.11.10",
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.9",
+    "antd": "^5.0.7",
     "axios": "^1.2.1",
-    "bootstrap": "^5.0.0-beta1",
     "chart.js": "^4.1.0",
     "classnames": "^2.3.2",
     "date-fns": "^2.29.3",
     "dotenv": "^16.0.3",
-    "antd": "^5.0.7",
     "eslint": "8.28.0",
     "eslint-config-next": "13.0.5",
     "flowbite": "^1.5.5",
@@ -38,8 +37,7 @@
     "react-dom": "18.2.0",
     "react-minimal-pie-chart": "^8.4.0",
     "react-paginate": "^8.1.4",
-    "swr": "^2.0.0",
-    "react-lottie": "^1.2.3"
+    "swr": "^2.0.0"
   },
   "devDependencies": {
     "@types/node": "^18.11.10",

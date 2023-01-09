@@ -2,8 +2,8 @@
   @apply m-[0px] z-[100000]
 }
 
-.paragraph {
-  @apply font-[35px] font-[140] font-sans
+.heading{
+  @apply text-[25px] font-[140] font-sans
 }
 
 .pending {
