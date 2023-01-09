@@ -63,6 +63,7 @@ export interface ModalProps {
   centered?: boolean
   children?: unknown
 }
+
 export interface chartProps {
   labels: string[]
   datasets: {
@@ -87,4 +88,8 @@ export interface usersProps {
   profile_pic: string
   created_at: string
   updated_at: string
+}
+
+interface SessionProps {
+  req: IncomingMessage
 }

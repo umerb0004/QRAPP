@@ -2,7 +2,8 @@ import type { AppProps } from 'next/app'
 import { NextPage } from 'next'
 import { ReactElement, ReactNode, useEffect } from 'react'
 import { Session } from 'next-auth'
-import { SessionProvider } from 'next-auth/react'
+import { SessionProvider, getSession } from 'next-auth/react'
+import { SessionProps } from '@src/typings'
 
 import { registerModal } from '../utils/modal_utils'
 
@@ -28,14 +29,36 @@ const App = ({
   }, [])
 
   if (Component.getLayout) {
-    return <SessionProvider session={pageProps.session}>
-      {Component.getLayout(<Component {...pageProps} />)}
-    </SessionProvider>
-  }        
+    return (
+      <SessionProvider session={pageProps.session}>
+        {Component.getLayout(<Component {...pageProps} />)}
+      </SessionProvider>
+    )
+  }
 
-  return <SessionProvider session={pageProps.session}>
-    <Component {...pageProps} />
-  </SessionProvider>
+  return (
+    <SessionProvider session={pageProps.session}>
+      <Component {...pageProps} />
+    </SessionProvider>
+  )
+}
+
+export const getServerSideProps = async ({ req }: SessionProps) => {
+  const session = await getSession({ req })
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      }
+    }
+  } 
+  return {
+    props: {
+      session,
+    }
+  }
 }
 
 export default App

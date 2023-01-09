@@ -41,7 +41,6 @@ const authOptions: NextAuthOptions = {
       },
     }),
   ],
-
   secret: process.env.JWT_SECRET,
 }
 

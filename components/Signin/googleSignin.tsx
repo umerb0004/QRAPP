@@ -4,7 +4,7 @@ import { googleButton } from './styles'
 import { SigninProps } from '@src/typings'
 
 
-const GoogleSignin = ({ providers }: SigninProps) => (
+const GoogleSignin = ({ providers } : SigninProps) => (
   <>
     {Object.values(providers).map(provider => (
       <div key={provider.id} className='flex flex-row items-center justify-center lgjustify-start'>

@@ -5,6 +5,8 @@ import { data } from '../dummyData/pendingReviewChart'
 import MenuSidebar from '../components/MenuSidebar'
 import PaginatedTable from '../components/pendingReviews/pendingReviewTable'
 
+export { getServerSideProps } from './_app'
+
 const Review = () => {
   let today = format(new Date(), 'dd/MM/yyyy')
 
@@ -39,6 +41,5 @@ const Review = () => {
     </div>
   </>
 }
-
 
 export default Review

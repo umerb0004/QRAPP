@@ -8,7 +8,7 @@ const leads = ['test@devsinc.com']
 sendMail.setApiKey(NEXT_PUBLIC_SG_API_KEY)
 
 const handler = () => {
-  cron.schedule('* * * * *', async () => {
+  cron.schedule('25 * * * *', async () => {
     try {
       const emailInfo = {
         to: leads,
