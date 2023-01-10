@@ -2,7 +2,11 @@
   "compilerOptions": {
     "noImplicitAny": false,
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -16,11 +20,20 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "@styles/*": ["./styles/*"],
+      "@components/*": ["./components/*"],
       "@public/*": ["./public/*"],
-      "@src/*": ["./*"]
+      "@src/*": ["./*"],
+      "@styles/*": ["./styles/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/pendingReviews/chart.tsx", "components/googleSignin/test.tsx"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "pages/test.tsx",
+    "pages/login.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

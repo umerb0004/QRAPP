@@ -64,6 +64,33 @@ export interface ModalProps {
   children?: unknown
 }
 
+export type Tag<T> = keyof T
+
+export type Marks = {
+  Ownership: number | undefined
+  Innovation: number | undefined
+  WorkEthics: number | undefined
+  Productivity: number | undefined
+  Responsibility: number | undefined
+  TimeManagement: number | undefined
+}
+
+export type Feedback<Type> = {
+  [Property in keyof Type as `feedback${Capitalize<string & Property>}`]: string
+}
+
+export type InputFieldDetails<T> = {
+  tag: Tag<T>
+  desc: keyof Feedback<T>
+  label: Tag<T>
+}
+
+export type ReviewFormProps = {
+  name: string
+  email: string
+  profile: string
+}
+
 export interface chartProps {
   labels: string[]
   datasets: {

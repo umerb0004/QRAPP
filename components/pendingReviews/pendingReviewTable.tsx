@@ -3,6 +3,7 @@ import { useState } from 'react'
 import ReactPaginate from 'react-paginate'
 import useSwr from 'swr'
 
+import ReviewForm from '@components/ReviewForm'
 import { usersProps } from '@src/typings'
 
 interface Props {
@@ -54,7 +55,7 @@ const Users = ({ currentUsers }: Props) => (
                     ></div>
                   </div>
                   <div className='text-left'>
-                    <p className=' text-black'>{user.first_name}</p>
+                    <p className=' text-black'>{user.first_name+' '+user.last_name} </p>
                     <p className='text-xs text-gray-600'>{user.email}</p>
                   </div>
                 </div>
@@ -62,9 +63,11 @@ const Users = ({ currentUsers }: Props) => (
               <td className='py-4 px-6'>{user.joining_date.split('', 10)}</td>
               <td className='py-4 px-6'>{user.Designations.name}</td>
               <td className='py-4 px-6'>
-                <button className='bg-blue-500 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded'>
-                  Add Review
-                </button>
+                <ReviewForm
+                  name={user.first_name+' '+user.last_name}
+                  email={user.email}
+                  profile={user.profile_pic}
+                />
               </td>
             </tr>
           ))
@@ -90,27 +93,29 @@ const PaginatedTable = ({ usersPerPage }: PaginatedTableProps) => {
   }
   if (isLoading) return <h1>loading</h1>
 
-  return <>
-    <Users currentUsers={currentUsers} />
-    <ReactPaginate
-      className='flex justify-end py-4'
-      nextLabel=' >'
-      onPageChange={handlePageClick}
-      pageCount={pageCount}
-      previousLabel='< '
-      pageClassName='page-item px-1 mx-1'
-      pageLinkClassName='page-link'
-      previousClassName='page-item px-2 mx-2'
-      previousLinkClassName='page-link'
-      nextClassName='page-item px-2 mx-2'
-      nextLinkClassName='page-link'
-      breakLabel='...'
-      breakClassName='page-item'
-      breakLinkClassName='page-link'
-      containerClassName='pagination'
-      activeClassName='active bg-gray-500 px-4 mx-1 text-white rounded-sm'
-    />
-  </>
+  return (
+    <>
+      <Users currentUsers={currentUsers} />
+      <ReactPaginate
+        className='flex justify-end py-4'
+        nextLabel=' >'
+        onPageChange={handlePageClick}
+        pageCount={pageCount}
+        previousLabel='< '
+        pageClassName='page-item px-1 mx-1'
+        pageLinkClassName='page-link'
+        previousClassName='page-item px-2 mx-2'
+        previousLinkClassName='page-link'
+        nextClassName='page-item px-2 mx-2'
+        nextLinkClassName='page-link'
+        breakLabel='...'
+        breakClassName='page-item'
+        breakLinkClassName='page-link'
+        containerClassName='pagination'
+        activeClassName='active bg-gray-500 px-4 mx-1 text-white rounded-sm'
+      />
+    </>
+  )
 }
 
 export default PaginatedTable

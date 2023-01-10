@@ -37,6 +37,8 @@
     "react-dom": "18.2.0",
     "react-minimal-pie-chart": "^8.4.0",
     "react-paginate": "^8.1.4",
+    "react-hook-form": "^7.41.3",
+    "react-simple-star-rating": "^5.1.7",
     "swr": "^2.0.0"
   },
   "devDependencies": {
