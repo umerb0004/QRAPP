@@ -8,7 +8,11 @@ module.exports = {
     require('flowbite/plugin')
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'regal-blue': '#243c5a',
+      },
+    },
     screens: {
       xs: '300px',
 
