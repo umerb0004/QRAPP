@@ -24,11 +24,14 @@
     "chart.js": "^4.1.0",
     "classnames": "^2.3.2",
     "date-fns": "^2.29.3",
+    "crypto-js": "^4.1.1",
     "dotenv": "^16.0.3",
     "eslint": "8.28.0",
     "eslint-config-next": "13.0.5",
     "flowbite": "^1.5.5",
     "flowbite-react": "^0.3.7",
+    "js-base64": "^3.7.4",
+    "jsonwebtoken": "^9.0.0",
     "next": "13.0.5",
     "next-auth": "^4.18.0",
     "node-cron": "^3.0.2",
@@ -39,12 +42,14 @@
     "react-paginate": "^8.1.4",
     "react-hook-form": "^7.41.3",
     "react-simple-star-rating": "^5.1.7",
-    "swr": "^2.0.0"
+    "swr": "^2.0.0",
+    "react-toastify": "^9.1.1"
   },
   "devDependencies": {
+    "@types/crypto-js": "^4.1.1",
+    "@types/jsonwebtoken": "^9.0.0",
     "@types/node": "^18.11.10",
     "@types/react": "18.0.25",
-    "@types/react-lottie": "^1.2.6",
     "@typescript-eslint/eslint-plugin": "^5.45.0",
     "autoprefixer": "^10.4.13",
     "eslint": "^8.28.0",
@@ -72,5 +77,11 @@
   },
   "prisma": {
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} ./prisma/migrations/seed.ts"
+  },
+  "browser": {
+    "fs": false,
+    "os": false,
+    "path": false,
+    "child_process": false
   }
 }

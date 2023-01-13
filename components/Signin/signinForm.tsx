@@ -1,8 +1,12 @@
 import { FormEventHandler, useState } from 'react'
+import Link from 'next/link'
 import { signIn } from 'next-auth/react'
+import { ToastContainer ,toast } from 'react-toastify'
 
 import GoogleSignin from './googleSignin'
 import { SigninProps } from '@src/typings'
+
+import 'react-toastify/dist/ReactToastify.css'
 import { 
   or, input,
   rememberMe,
@@ -14,6 +18,8 @@ import {
 const SigninForm = ({ providers }: SigninProps) => {
   const [user, setUser] = useState({ email: '', password: '' })
 
+  const notify = () => {toast.error('Incorrect Email or Password')}
+  
   const handleSubmit: FormEventHandler<HTMLFormElement> = async e => {
     e.preventDefault()
 
@@ -23,9 +29,7 @@ const SigninForm = ({ providers }: SigninProps) => {
       redirect: false,
     })
     
-    if (res?.status === 401) {
-      alert('Password or Email is Incorrect')
-    }
+    if (res?.status === 401) notify()
   }
   
   return <>
@@ -65,16 +69,15 @@ const SigninForm = ({ providers }: SigninProps) => {
             Remember Me
           </label>
         </div>
-        <a href='#!' className='text-gray-800 text-sm'>
-          Forgot Password?
-        </a>
+          <Link href='/forgetPassword' className='text-gray-800 text-sm hover:text-blue-500'> Forgot password?</Link>
       </div>
-      <div className='text-center lgtext-left w-full'>
+      <div className='text-center w-full'>
         <button onClick={() => handleSubmit}
           className={signinButton}
         >
           Sign In
         </button>
+          <ToastContainer />
       </div>
     </form>
   </>
