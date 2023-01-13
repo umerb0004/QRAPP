@@ -5,12 +5,12 @@ import styles from '@styles/ProfileSideBar.module.css'
 
 const ManagerDetails = ({ src, alt, name, email, designation }: UserInfo) => (
   <div className={`${styles.card} text-gray-700 text-left`}>
-    <h2 className='font-medium text-lg mb-2'>{designation}</h2>
+    <h2 className='mb-2 text-lg font-medium'>{designation}</h2>
     <div className='flex items-center w-full'>
       <ProfileImage src={src} alt={alt} />
-      <div className='ml-2 w-full items-center font-extralight overflow-x-hidden'>
+      <div className='items-center w-full ml-2 overflow-x-hidden font-extralight'>
         <h2 className='font-medium break-words'>{name}</h2>
-        <h5 className='text-gray-600 text-sm break-words'>{email}</h5>
+        <h5 className='text-sm text-gray-600 break-words'>{email}</h5>
       </div>
     </div>
   </div>

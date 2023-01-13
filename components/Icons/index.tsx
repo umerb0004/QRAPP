@@ -26,4 +26,6 @@ export const ViewIcon = () => <EyeIcon className={iconClasses}/>
 export const RightArrowIcon = () => <ChevronRightIcon className={iconClasses}/>
 export const LeftArrowIcon = () => <ChevronLeftIcon className={iconClasses}/>
 export { ChevronDownIcon as DropdownIcon } from '@heroicons/react/24/solid'
+export { ChevronUpIcon as UpIcon } from '@heroicons/react/24/solid'
 export { EnvelopeIcon as EmailIcon } from '@heroicons/react/24/solid'
+export { Squares2X2Icon as ViewAllIcon } from '@heroicons/react/24/solid'
