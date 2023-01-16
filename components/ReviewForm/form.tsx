@@ -8,7 +8,7 @@ import {
   type Marks,
   type ReviewFormProps as Props,
 } from '@src/typings'
-import ProfileImage from '@components/Image'
+import ProfileImage from '@components/image'
 
 const formFields: InputFieldDetails<Marks>[] = [
   {

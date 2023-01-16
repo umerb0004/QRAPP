@@ -1,5 +1,5 @@
 import { getProviders } from 'next-auth/react'
-import Signin from '../components/Signin'
+import Signin from '../components/signin'
 import { SigninProps } from '@src/typings'
 
 const Home = ({ providers }: SigninProps) => <Signin providers={providers} />

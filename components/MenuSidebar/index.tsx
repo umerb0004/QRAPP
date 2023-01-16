@@ -4,7 +4,7 @@ import { signOut } from 'next-auth/react'
 import { useState } from 'react'
 
 import { menuItems } from './menu'
-import { SignoutIcon } from '../Icons'
+import { SignoutIcon } from '../icons'
 
 import { MenuLabel, NavItem } from './style'
 

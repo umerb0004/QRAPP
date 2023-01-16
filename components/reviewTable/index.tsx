@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { TableHeaders } from '../MenuSidebar/menu'
+import { TableHeaders } from '../menuSidebar/menu'
 import PaginatedTable from './pagination'
 
 export function Table(props) {

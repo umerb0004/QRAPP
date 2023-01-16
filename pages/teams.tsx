@@ -1,5 +1,5 @@
-import MenuSidebar from '@components/MenuSidebar'
-import PaginatedTable from '@components/Teams/teamsTable'
+import MenuSidebar from '@components/menuSidebar'
+import PaginatedTable from '@components/teams/teamsTable'
 
 const Teams = () => (
   <div className='p-h-full flex flex-row justify-start'>

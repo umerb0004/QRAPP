@@ -3,7 +3,7 @@ import { useState } from 'react'
 import ReactPaginate from 'react-paginate'
 import useSwr from 'swr'
 
-import ReviewForm from '@components/ReviewForm'
+import ReviewForm from '@components/reviewForm'
 import { usersProps } from '@src/typings'
 
 interface Props {

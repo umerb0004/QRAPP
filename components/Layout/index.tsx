@@ -1,6 +1,6 @@
-import Dashboard from '../Dashboard/Dashboard'
-import MenuSidebar from '../MenuSidebar'
-import ProfileSidebar from '../ProfileSideBar'
+import Dashboard from '../dashboard'
+import MenuSidebar from '../menuSidebar'
+import ProfileSidebar from '../profileSideBar'
 
 const Layout = () => (
   <div className='h-full flex flex-row justify-start'>

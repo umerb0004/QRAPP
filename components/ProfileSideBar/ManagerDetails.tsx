@@ -1,4 +1,4 @@
-import ProfileImage from '../Image'
+import ProfileImage from '../image'
 import { UserInfo } from '@src/typings'
 
 import styles from '@styles/ProfileSideBar.module.css'

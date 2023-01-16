@@ -1,4 +1,4 @@
-import MenuSidebar from '../../components/MenuSidebar'
+import MenuSidebar from '../../components/menuSidebar'
 import { Table } from '../../components/reviewTable'
 import { users } from '../../dummyData/users'
 

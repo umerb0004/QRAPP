@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
-import { DropdownIcon } from '@components/Icons'
-import ProfileImage from '@components/Image'
+import { DropdownIcon } from '@components/icons'
+import ProfileImage from '@components/image'
 import { UserInfo } from '@src/typings'
 
 import styles from '@styles/ProfileSideBar.module.css'

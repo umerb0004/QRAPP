@@ -1,9 +1,9 @@
 import format from 'date-fns/format'
 import { useState } from 'react'
 
-import { DropdownIcon, UpIcon, ViewAllIcon } from '@src/components/Icons'
+import { DropdownIcon, UpIcon, ViewAllIcon } from '@components/icons'
 import { biWeekly } from '@src/dummyData/biWeeklySync'
-import ProfileImage from '@src/components/Image'
+import ProfileImage from '@components/image'
 
 const SyncMembers = () => {
   const [showMore, setShowMore] = useState(

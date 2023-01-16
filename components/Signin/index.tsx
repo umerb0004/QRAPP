@@ -1,6 +1,6 @@
 import { useSession } from 'next-auth/react'
 
-import Layout from '../Layout/index'
+import Layout from '../layout/index'
 import SigninForm from './signinForm'
 import { SigninProps } from '@src/typings'
 

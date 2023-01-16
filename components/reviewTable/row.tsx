@@ -2,7 +2,7 @@ import classNames from 'classnames'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import * as Icons from '../../components/Icons'
+import * as Icons from '../icons'
 
 import styles from '../../styles/Review.module.css'
 
