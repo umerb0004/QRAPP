@@ -1,11 +1,10 @@
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
-
-import SyncMembers from './BiWeeklySyncMembers'
+import SyncMembers from './biWeeklySyncMembers'
 
 import styles from '@styles/Dashboard.module.css'
 
-const GoalsGraph = dynamic(() => import('./Graph'))
+const GoalsGraph = dynamic(() => import('./graph'))
 
 const Dashboard = () => <>
   <section className='container py-5 pl-5 pr-1 bg-slate-50'>

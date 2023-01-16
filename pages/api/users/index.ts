@@ -12,6 +12,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         email: true,
         joining_date: true,
         profile_pic: true,
+        designation_id: true,
         Designations: {
           select: {
             name: true,

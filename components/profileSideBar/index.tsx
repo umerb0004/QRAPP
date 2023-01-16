@@ -3,9 +3,9 @@ import { useRef, useState } from 'react'
 import { useSession } from 'next-auth/react'
 import useSwr from 'swr'
 
-import ManagerDetails from './ManagerDetails'
-import ProfileDetails from './ProfileDetails'
-import ReportingDetails from './ReportingDetails'
+import ManagerDetails from './managerDetails'
+import ProfileDetails from './profileDetails'
+import ReportingDetails from './reportingDetails'
 import ToggleSwitch from './ToggleSwitch'
 import { UserDetails, UserInfo } from '@src/typings'
 

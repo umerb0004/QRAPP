@@ -3,7 +3,7 @@ import { useState } from 'react'
 import ReactPaginate from 'react-paginate'
 import useSwr from 'swr'
 
-import ReviewForm from '@components/reviewForm'
+import ReviewFormModal from '@components/ReviewFormModal'
 import { usersProps } from '@src/typings'
 
 interface Props {
@@ -55,7 +55,9 @@ const Users = ({ currentUsers }: Props) => (
                     ></div>
                   </div>
                   <div className='text-left'>
-                    <p className=' text-black'>{user.first_name+' '+user.last_name} </p>
+                    <p className=' text-black'>
+                      {user.first_name + ' ' + user.last_name}{' '}
+                    </p>
                     <p className='text-xs text-gray-600'>{user.email}</p>
                   </div>
                 </div>
@@ -63,10 +65,13 @@ const Users = ({ currentUsers }: Props) => (
               <td className='py-4 px-6'>{user.joining_date.split('', 10)}</td>
               <td className='py-4 px-6'>{user.Designations.name}</td>
               <td className='py-4 px-6'>
-                <ReviewForm
-                  name={user.first_name+' '+user.last_name}
+                <ReviewFormModal
+                  id={parseInt(user.id)}
+                  designation_id={user.designation_id}
+                  first_name={user.first_name}
+                  last_name={user.last_name}
                   email={user.email}
-                  profile={user.profile_pic}
+                  profile_pic={user.profile_pic}
                 />
               </td>
             </tr>

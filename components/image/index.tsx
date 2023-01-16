@@ -10,24 +10,26 @@ export type image = ImageProps & {
   w?: string
 }
 
-const ProfileImage = ({ src, alt, h='h-12', w='w-16', fill }: image) => {
+const ProfileImage = ({ src, alt, h = 'h-12', w = 'w-16', fill }: image) => {
   const [imgSrc, setImgSrc] = useState(src)
 
-  return <>
-    <div className={`${h} ${w} ${fill && 'relative'}`}>
-      <Image
-        src={imgSrc}
-        alt={alt}
-        width={fill ? undefined : 48}
-        height={fill ? undefined : 48}
-        className={`${styles.img_profile} w-full h-full ${
-          fill && 'object-contain'
-        }`}
-        onError={() => setImgSrc(profileImage)}
-        fill={fill}
-      />
-    </div>
-  </>
+  return (
+    <>
+      <div className={`${h} ${w} ${fill && 'relative'}`}>
+        <Image
+          src={imgSrc}
+          alt={alt}
+          width={fill ? undefined : 48}
+          height={fill ? undefined : 48}
+          className={`${styles.img_profile} w-full h-full ${
+            fill && 'object-contain'
+          }`}
+          onError={() => setImgSrc(profileImage)}
+          fill={fill}
+        />
+      </div>
+    </>
+  )
 }
 
 export default ProfileImage

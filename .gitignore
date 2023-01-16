@@ -4,6 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
+package-lock.json
 
 # testing
 /coverage
@@ -36,3 +37,5 @@ next-env.d.ts
 
 # package-lock
 package-lock.json
+.prettierrc.json
+.vscode/settings.json

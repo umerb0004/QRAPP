@@ -20,11 +20,21 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "@components/*": ["./components/*"],
-      "@utils/*": ["./utils/*"],
-      "@public/*": ["./public/*"],
-      "@src/*": ["./*"],
-      "@styles/*": ["./styles/*"]
+      "@components/*": [
+        "./components/*"
+      ],
+      "@utils/*": [
+        "./utils/*"
+      ],
+      "@public/*": [
+        "./public/*"
+      ],
+      "@src/*": [
+        "./*"
+      ],
+      "@styles/*": [
+        "./styles/*"
+      ]
     }
   },
   "include": [

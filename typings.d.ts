@@ -66,8 +66,8 @@ export interface ModalProps {
 
 export type Tag<T> = keyof T
 
-export type Marks = {
-  Ownership: number | undefined
+export type Tags = {
+  OwnerShip: number | undefined
   Innovation: number | undefined
   WorkEthics: number | undefined
   Productivity: number | undefined
@@ -75,20 +75,57 @@ export type Marks = {
   TimeManagement: number | undefined
 }
 
-export type Feedback<Type> = {
-  [Property in keyof Type as `feedback${Capitalize<string & Property>}`]: string
+export type Rating<Type> = {
+  [Property in keyof Type as `${Property}.rating`]: number
 }
 
+export type Reason<Type> = {
+  [Property in keyof Type as `${Property}.reason`]: string
+}
+
+type Goal = {
+  description: string
+  date: Date
+}
+
+export type FormFields = Rating<Tags> &
+  Reason<Tags> & {
+    goals: Goal[]
+  }
+
 export type InputFieldDetails<T> = {
-  tag: Tag<T>
-  desc: keyof Feedback<T>
+  tag: keyof Rating<T>
+  feedback: keyof Reason<T>
+  desc: string
   label: Tag<T>
 }
 
-export type ReviewFormProps = {
-  name: string
-  email: string
-  profile: string
+export type TagData = {
+  rating: number
+  reason: string
+}
+
+export type FormDataObject = {
+  [K in keyof Tags]: TagData
+}
+
+export type FormReqData = FormDataObject & {
+  userId: number
+  goals: Goal[]
+}
+
+export type ReviewTags<T> = {
+  name: Tag<T>
+  description: string
+}
+
+export type ReviewModalProps = Person & {
+  id: number
+  designation_id: number
+}
+
+export type ReviewFormProps = ReviewModalProps & {
+  hideModal: VoidFunction
 }
 
 export interface chartProps {
@@ -105,6 +142,7 @@ export interface usersProps {
   last_name: string
   joining_date: string
   department_id: number
+  designation_id: number
   Designations: { name: stirng }
   email: string
   employee_id: number
