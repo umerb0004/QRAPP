@@ -1,11 +1,13 @@
+import dynamic from 'next/dynamic'
 import Image from 'next/image'
 
 import SyncMembers from './BiWeeklySyncMembers'
 
 import styles from '@styles/Dashboard.module.css'
 
+const GoalsGraph = dynamic(() => import('./Graph'))
 
-const Dashboard = () => (
+const Dashboard = () => <>
   <section className='container py-5 pl-5 pr-1 bg-slate-50'>
     <div className='card'>
       <div className='col-md-12'>
@@ -18,7 +20,6 @@ const Dashboard = () => (
               height={300}
             />
           </div>
-
           <div className='col-md-7'>
             <h1>
               <b>WELCOME</b>
@@ -46,10 +47,15 @@ const Dashboard = () => (
         </button>
       </div>
     </div>
-    <div className='w-5/12 mt-4'>
-      <SyncMembers />
+    <div className='flex justify-between'>
+      <div className='flex-row w-5/12 mt-4'>
+        <SyncMembers />
+      </div>
+      <div className='flex-row w-5/12 mt-4'>
+        <GoalsGraph></GoalsGraph>
+      </div>
     </div>
   </section>
-)
+  </>
 
 export default Dashboard

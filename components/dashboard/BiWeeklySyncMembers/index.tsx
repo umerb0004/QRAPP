@@ -30,7 +30,7 @@ const SyncMembers = () => {
       {biWeekly.map((member, index) => (
         <div
           key={member.id}
-          className='relative py-2 px-2 pl-2 border-l border-gray-200 dark:border-gray-700'
+          className='relative p-4 pl-2 border-l border-gray-200 dark:border-gray-700'
         >
           <div className={`absolute w-3 h-3 ${index % 2 !== 0 ? 'bg-emerald-600' : 'bg-blue-500'} rounded-full mt-7 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-900`}></div>
           <div className='flex items-start w-full p-2 border rounded ml-2'>
