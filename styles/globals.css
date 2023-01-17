@@ -61,7 +61,7 @@ a {
 }
 
 .card {
-  @apply bg-white rounded-[15px] shadow-[0px_4px_8px_0px_rgba(0,0,0,0.2)] 
+  @apply bg-white rounded-[15px] shadow-[0px_4px_8px_0px_rgba(0,0,0,0.2)]
 }
 
 .card-comp {
@@ -72,20 +72,24 @@ a {
   @apply text-[50px]
 }
 
-.custom-card {
-  @apply bg-white rounded-[15px] shadow-[0px_4px_8px_0px_rgb(0,0,0,20%)] p-[35px] delay-[0.3ms]
+.icon {
+  @apply bg-orange-500 rounded-[10px] w-10 mt-[-50px] ml-5 mb-4 h-9
 }
 
-.card h2 {
-  @apply text-[30px] m-[10px] p-[15px]
+.custom-card {
+  @apply bg-white rounded-[15px] shadow-[0px_4px_8px_0px_rgb(0,0,0,20%)] pl-[10px] pr-[20px] delay-[0.3ms] m-[15px] h-[128px] w-[150px]
+}
+
+.custom-card h2{
+  @apply text-[13px] justify-start mb-[22px] 
+}
+
+.custom-card b {
+  @apply text-[20px]
 }
  
-.pending-component button:hover {
-  @apply bg-[#16bcb2c1] delay-[0.4ms] transform scale-[1.05]
-}
-
-.pending-component button:active {
-  @apply bg-[#90ee90]
+.card-container button:hover {
+  @apply delay-[0.4ms] transform scale-[1.04]
 }
 
 @media (prefers-color-scheme: dark) {
