@@ -1,6 +1,8 @@
 import MenuSidebar from '@components/menuSidebar'
 import PaginatedTable from '@components/teams/teamsTable'
 
+export { getServerSideProps } from './_app'
+
 const Teams = () => (
   <div className='p-h-full flex flex-row justify-start'>
     <MenuSidebar />
