@@ -74,7 +74,7 @@ DB seed
  npx prisma db seed
 ```
 
-### Tailwind CSS
+### Tailwind CSS 
 - [Tailwind](https://tailwindcss.com/) is used for styling.
 
 ## Environment Variables
