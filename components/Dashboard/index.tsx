@@ -8,11 +8,11 @@ const GoalsGraph = dynamic(() => import('@comp/Dashboard/Graph'))
 const Dashboard = () => (
   <section className='container py-5 pl-5 pr-1 bg-slate-50'>
     <Card />
-    <div className='flex justify-between'>
-      <div className='flex-row w-5/12 mt-4'>
+    <div className='flex justify-between mt-4'>
+      <div className='w-5/12'>
         <SyncMembers />
       </div>
-      <div className='flex-row w-5/12 mt-4'>
+      <div className='w-5/12'>
         <GoalsGraph></GoalsGraph>
       </div>
     </div>

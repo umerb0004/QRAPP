@@ -39,7 +39,7 @@ const Teams = ({ teamMembers }: Props) => {
           </thead>
 
           <tbody className='bg-white'>
-            {teamMembers ? (
+            {(teamMembers && teamMembers.length !== 0) ? (
               teamMembers.map((user, index) => (
                 <tr
                   className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'

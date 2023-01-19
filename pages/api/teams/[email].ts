@@ -14,13 +14,13 @@ export default async function handler(
         email: email as string,
       },
       select: {
-        lead_id: true,
+        id: true,
       }
     })
 
     const teams = await prisma.users.findMany({
       where: {
-        lead_id: currentUser!.lead_id,
+        lead_id: parseInt(currentUser!.id),
       },
       select: {
         id: true,

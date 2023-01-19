@@ -1,11 +1,10 @@
 import { useState } from 'react'
 
 import { ProfileImage } from 'components'
-
 import { UserInfo } from '@src/typings'
-
 import { DropdownIcon } from '@public/Icons'
 import { expendedClasses, nameEmailClasses, teamLengthClasses } from '@comp/ProfileSideBar/style'
+
 import styles from '@styles/ProfileSideBar.module.css'
 
 type Props = {

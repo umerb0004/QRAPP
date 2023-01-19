@@ -73,7 +73,7 @@ a {
 }
 
 .icon {
-  @apply bg-orange-500 rounded-[10px] w-10 mt-[-50px] ml-5 mb-4 h-9
+  @apply rounded-[10px] w-10 mt-[-50px] ml-5 mb-4 h-9
 }
 
 .custom-card {
