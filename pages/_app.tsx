@@ -5,12 +5,12 @@ import { Session } from 'next-auth'
 import { SessionProvider, getSession } from 'next-auth/react'
 import { SessionProps } from '@src/typings'
 
-import { registerModal } from '../utils/modal_utils'
+import { registerModal } from '@utils/modal_utils'
 
 import '../node_modules/@fortawesome/fontawesome-free/css/all.css'
-import '../styles/Calender.css'
-import '../styles/DatePicker.css'
-import '../styles/globals.css'
+import '@styles/Calender.css'
+import '@styles/DatePicker.css'
+import '@styles/globals.css'
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode

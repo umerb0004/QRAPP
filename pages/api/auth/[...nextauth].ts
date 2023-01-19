@@ -1,7 +1,7 @@
 import CredentialsProvider from 'next-auth/providers/credentials'
 import GoogleProvider from 'next-auth/providers/google'
 import NextAuth, { NextAuthOptions } from 'next-auth/next'
-import { PrismaClient } from '@prisma/client'
+import { prisma } from '@utils/clients'
 
 const authOptions: NextAuthOptions = {
   session: {
@@ -24,7 +24,6 @@ const authOptions: NextAuthOptions = {
           form_password: string
         }
 
-        const prisma = new PrismaClient()
         const user = await prisma.users.findUnique({
           where: { email: form_email },
         })

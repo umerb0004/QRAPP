@@ -1,9 +1,9 @@
 import dynamic from 'next/dynamic'
 
-import SyncMembers from './biWeeklySyncMembers'
-import Card from './card'
+import SyncMembers from '@comp/Dashboard/BiWeeklySyncMembers'
+import Card from '@comp/Dashboard/card'
 
-const GoalsGraph = dynamic(() => import('./graph'))
+const GoalsGraph = dynamic(() => import('@comp/Dashboard/Graph'))
 
 const Dashboard = () => (
   <section className='container py-5 pl-5 pr-1 bg-slate-50'>

@@ -1,0 +1,1 @@
+export const lottieSectionClasses =  'container py-5 pl-5 pr-1 bg-slate-50'

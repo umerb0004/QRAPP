@@ -4,7 +4,7 @@ import Router from 'next/router'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-import BackToLogin from '../../../components/forgotPassword/link'
+import BackToLogin from '../../../components/ForgotPassword/link'
 
 const ResetPassword = () => {
   const [password, setPassword] = useState('')

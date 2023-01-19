@@ -1,5 +1,4 @@
-import MenuSidebar from '@components/menuSidebar'
-import PaginatedTable from '@components/teams/teamsTable'
+import { MenuSidebar, Teams as PaginatedTable } from 'components'
 
 export { getServerSideProps } from './_app'
 
@@ -13,7 +12,7 @@ const Teams = () => (
         </div>
         <div className='w-full my-8 overflow-hidden rounded-lg shadow-lg'>
           <div className='w-full overflow-x-auto'>
-            <PaginatedTable usersPerPage={10}/>
+            <PaginatedTable usersPerPage={10} />
           </div>
         </div>
       </section>

@@ -13,7 +13,7 @@ import {
   type ReviewTags,
   type Tags,
 } from '@src/typings'
-import ProfileImage from '@components/image'
+import { ProfileImage } from 'components'
 
 const fetcher = (url: string, id: number, quarter: number) =>
   axios
@@ -56,15 +56,15 @@ const ReviewFrom = ({
   let formFields: InputFieldDetails<Tags>[] = isLoading
     ? []
     : data!.map(({ name, description }) => {
-        name = name.replace(/ /g, '') as keyof Tags
-        const obj: InputFieldDetails<Tags> = {
-          tag: `${name}.rating`,
-          feedback: `${name}.reason`,
-          label: name,
-          desc: description,
-        }
-        return obj
-      })
+      name = name.replace(/ /g, '') as keyof Tags
+      const obj: InputFieldDetails<Tags> = {
+        tag: `${name}.rating`,
+        feedback: `${name}.reason`,
+        label: name,
+        desc: description,
+      }
+      return obj
+    })
 
   const noTags = formFields.length === 0
 

@@ -1,9 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { PrismaClient } from '@prisma/client'
+import { prisma } from '@utils/clients'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
-    const prisma = new PrismaClient()
     const getUsers = await prisma.users.findMany({
       select: {
         id: true,

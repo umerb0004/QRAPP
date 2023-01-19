@@ -1,7 +1,6 @@
 import Image from 'next/image'
 
-import CustomCard from './customCard'
-
+import CustomCard from '@comp/Dashboard/customCard'
 
 const Card = () => (
   <div className='card'>

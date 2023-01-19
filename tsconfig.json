@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": "./",
     "noImplicitAny": false,
     "target": "es5",
     "lib": [
@@ -20,21 +21,11 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "@components/*": [
-        "./components/*"
-      ],
-      "@utils/*": [
-        "./utils/*"
-      ],
-      "@public/*": [
-        "./public/*"
-      ],
-      "@src/*": [
-        "./*"
-      ],
-      "@styles/*": [
-        "./styles/*"
-      ]
+      "@utils/*": ["./utils/*"],
+      "@public/*": ["./public/*"],
+      "@src/*": ["./*"],
+      "@styles/*": ["./styles/*"],
+      "@comp/*" : ["components/*"],
     }
   },
   "include": [

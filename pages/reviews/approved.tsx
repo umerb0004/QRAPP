@@ -1,15 +1,14 @@
-import MenuSidebar from '../../components/menuSidebar'
-import { Table } from '../../components/reviewTable'
-import { users } from '../../dummyData/users'
+import { ReviewTable, MenuSidebar } from 'components'
 
 import styles from '@styles/Review.module.css'
+import { users } from 'dummyData/users'
 
 export { getServerSideProps } from '../_app'
 
 const Reviews = () => (
   <div className={styles.reviews_page}>
     <MenuSidebar />
-    <Table data={users} />
+    <ReviewTable data={users} />
   </div>
 )
 

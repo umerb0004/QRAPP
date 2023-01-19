@@ -1,12 +1,11 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { PrismaClient } from '@prisma/client'
+import { prisma } from '@utils/clients'
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   const { email } = req.query
-  const prisma = new PrismaClient()
   
   try {
     const userData = await prisma.users.findUnique({
