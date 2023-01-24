@@ -37,6 +37,7 @@ const ProfileSidebar = () => {
   })
 
   return <>
+  <aside className='h-screen sticky top-0'>
     <div className={sidebarClasses}>
       <ProfileDetails
         src={userData.profile_pic}
@@ -66,6 +67,7 @@ const ProfileSidebar = () => {
       )}
       <div ref={scrollRef} />
     </div>
+  </aside>
   </>
 }
 

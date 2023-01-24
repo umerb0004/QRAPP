@@ -10,7 +10,7 @@ import {
 } from '@comp/ReviewTable/style'
 
 const ReviewTable = ({ data: usersReviews }) => (
-  <div className='h-screen flex-1 p-4 bg-slate-50'>
+  <div className='h-full flex-1 p-4 bg-slate-50'>
     <h3 className={reviewsHeadingClasses}>Reviews</h3>
     <div className='relative shadow-md sm:rounded-lg'>
       <div className='pb-4 dark:bg-gray-900'>

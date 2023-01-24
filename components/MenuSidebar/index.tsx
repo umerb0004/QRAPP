@@ -14,6 +14,7 @@ const MenuSidebar = () => {
   const handleSidebarToggle = () => setToggleCollapse(!toggleCollapse)
 
   return <>
+  <aside className='h-screen sticky top-0'>
     <div className={wrapperClasses(toggleCollapse)}>
       <div className='flex flex-col'>
         <div className='flex py-4'>
@@ -52,6 +53,7 @@ const MenuSidebar = () => {
         </div>
       </div>
     </div>
+  </aside>
   </>
 }
 

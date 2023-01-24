@@ -10,7 +10,7 @@ export { getServerSideProps } from '../_app'
 const Review = () => (
   <div className='h-full flex flex-row justify-start'>
     <MenuSidebar />
-    <div className='h-screen flex-1 p-4 bg-slate-50'>
+    <div className='h-full flex-1 p-4 bg-slate-50'>
       <section className='container mx-auto'>
         <div className='flex justify-between items-center'>
           <div className='text-top'>
