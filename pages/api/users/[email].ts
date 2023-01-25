@@ -13,6 +13,7 @@ export default async function handler(
         email: email as string,
       },
       select: {
+        id: true,
         first_name: true,
         last_name: true,
         email: true,
@@ -29,7 +30,7 @@ export default async function handler(
 
     const manager = await prisma.users.findUnique({
       where: {
-        id: userData!.manager_id.toString(),
+        id: userData!.manager_id,
       },
       select: {
         first_name: true,
@@ -41,7 +42,7 @@ export default async function handler(
 
     const lead = await prisma.users.findUnique({
       where: {
-        id: userData!.manager_id.toString(),
+        id: userData!.manager_id,
       },
       select: {
         first_name: true,
@@ -53,7 +54,7 @@ export default async function handler(
     
     const team = await prisma.users.findMany({
       where: {
-        lead_id: userData!.lead_id,
+        lead_id: userData!.id,
       },
       select: {
         first_name: true,

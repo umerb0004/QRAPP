@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient, Tasks_type } from '@prisma/client'
 
 import { type FormReqData } from '@src/typings'
 
@@ -22,9 +22,6 @@ export default async function handler(
         },
         select: {
           tags: {
-            where: {
-              quarter_no: parseInt(quarter as string),
-            },
             select: {
               ReviewTags: {
                 select: {
@@ -54,25 +51,25 @@ export default async function handler(
       const prisma = new PrismaClient()
       const review = await prisma.userReviews.create({
         data: {
-          user_id: userId.toString(),
+          user_id: userId,
           marks_received: marks,
-          reviewed_by_id: 0,
-          is_approved: false,
-        },
+          is_approved: false
+        }
       })
 
       const tasks = goals.map(({ description: goal, date }) => {
         return {
-          user_id: userId.toString(),
-          user_review_id: review.id,
+          user_id: userId,
+          record_id: review.id,
           description: goal,
           duration: date,
-          type: 'User Review',
+          assigned_by: 1,
+          type: Tasks_type.userReviews
         }
       })
 
       await prisma.tasks.createMany({
-        data: tasks,
+        data: tasks
       })
 
       res.status(201).json('Added review!')

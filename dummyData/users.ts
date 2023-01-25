@@ -1,6 +1,5 @@
 export const users = [
   {
-    id: '1',
     first_name: 'Hafsa',
     last_name: 'Latif',
     joining_date: '2015-03-25T12:00:00Z',
@@ -19,7 +18,6 @@ export const users = [
     updated_at: '2015-03-25T12:00:00Z'
   },
   {
-    id: '2',
     first_name: 'Fareed',
     last_name: 'Murtaza',
     joining_date: '2015-03-25T12:00:00Z',
@@ -38,7 +36,6 @@ export const users = [
     updated_at: '2015-03-25T12:00:00Z'
   },
   {
-    id: '3',
     first_name: 'Umer',
     last_name: 'Butt',
     joining_date: '2015-03-25T12:00:00Z',
@@ -57,7 +54,6 @@ export const users = [
     updated_at: '2015-03-25T12:00:00Z'
   },
   {
-    id: '4',
     first_name: 'Musa',
     last_name: 'Raza',
     joining_date: '2015-03-25T12:00:00Z',
@@ -76,7 +72,6 @@ export const users = [
     updated_at: '2015-03-25T12:00:00Z'
   },
   {
-    id: '5',
     first_name: 'Ghaliyah',
     last_name: 'Masood',
     joining_date: '2015-03-25T12:00:00Z',
@@ -95,7 +90,6 @@ export const users = [
     updated_at: '2015-03-25T12:00:00Z'
   },
   {
-    id: '6',
     first_name: 'Ibrar',
     last_name: 'Hussain',
     joining_date: '2022-04-04T12:00:00Z',
@@ -114,7 +108,6 @@ export const users = [
     updated_at: '2015-03-25T12:00:00Z'
   },
   {
-    id: '7',
     first_name: 'Ayesha',
     last_name: 'Arshad',
     joining_date: '2015-03-25T12:00:00Z',
@@ -133,7 +126,6 @@ export const users = [
     updated_at: '2015-03-25T12:00:00Z'
   },
   {
-    id: '8',
     first_name: 'Muhammad',
     last_name: 'Arslan',
     joining_date: '2015-03-25T12:00:00Z',
@@ -152,7 +144,6 @@ export const users = [
     updated_at: '2015-03-25T12:00:00Z'
   },
   {
-    id: '9',
     first_name: 'Muhammad',
     last_name: 'Adeel',
     joining_date: '2015-03-25T12:00:00Z',
@@ -171,7 +162,6 @@ export const users = [
     updated_at: '2015-03-25T12:00:00Z'
   },
   {
-    id: '10',
     first_name: 'Zahid',
     last_name: 'Ali',
     joining_date: '2015-03-25T12:00:00Z',
@@ -190,7 +180,6 @@ export const users = [
     updated_at: '2015-03-25T12:00:00Z'
   },
   {
-    id: '11',
     first_name: 'Umar',
     last_name: 'Khalid',
     joining_date: '2015-03-25T12:00:00Z',
@@ -209,7 +198,6 @@ export const users = [
     updated_at: '2015-03-25T12:00:00Z'
   },
   {
-    id: '12',
     first_name: 'Muhammad',
     last_name: 'Moiz',
     joining_date: '2015-03-25T12:00:00Z',
@@ -228,7 +216,6 @@ export const users = [
     updated_at: '2015-03-25T12:00:00Z'
   },
   {
-    id: '13',
     first_name: 'Ali',
     last_name: 'Hassan',
     joining_date: '2015-03-25T12:00:00Z',
@@ -247,7 +234,6 @@ export const users = [
     updated_at: '2015-03-25T12:00:00Z'
   },
   {
-    id: '14',
     first_name: 'Abdul',
     last_name: 'Muqeet',
     joining_date: '2015-03-25T12:00:00Z',
@@ -266,7 +252,6 @@ export const users = [
     updated_at: '2015-03-25T12:00:00Z'
   },
   {
-    id: '15',
     first_name: 'Faizan',
     last_name: 'Ali',
     joining_date: '2015-03-25T12:00:00Z',
@@ -285,7 +270,6 @@ export const users = [
     updated_at: '2015-03-25T12:00:00Z'
   },
   {
-    id: '16',
     first_name: 'Mudassar',
     last_name: 'Ali',
     joining_date: '2015-03-25T12:00:00Z',
@@ -304,7 +288,6 @@ export const users = [
     updated_at: '2015-03-25T12:00:00Z'
   },
   {
-    id: '17',
     first_name: 'Umer',
     last_name: 'Khan',
     joining_date: '2015-03-25T12:00:00Z',
@@ -323,7 +306,6 @@ export const users = [
     updated_at: '2015-03-25T12:00:00Z'
   },
   {
-    id: '18',
     first_name: 'Fahad',
     last_name: 'Murtaza',
     joining_date: '2015-03-25T12:00:00Z',
@@ -342,7 +324,6 @@ export const users = [
     updated_at: '2015-03-25T12:00:00Z'
   },
   {
-    id: '19',
     first_name: 'Ahsan',
     last_name: 'Farid',
     joining_date: '2015-03-25T12:00:00Z',
@@ -361,7 +342,6 @@ export const users = [
     updated_at: '2015-03-25T12:00:00Z'
   },
   {
-    id: '20',
     first_name: 'Bilal',
     last_name: 'Nadeem',
     joining_date: '2015-03-25T12:00:00Z',

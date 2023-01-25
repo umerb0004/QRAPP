@@ -11,17 +11,16 @@ import { users } from '../../dummyData/users'
 const prisma = new PrismaClient()
 
 const main = async () => {
-
   await prisma.departments.createMany({
-    data: departments,
+    data: departments
   })
-
+  
   await prisma.designations.createMany({
-    data: designations,
+    data: designations
   })
 
   await prisma.users.createMany({
-    data: users,
+    data: users
   })
 
   await prisma.reviewTags.createMany({
@@ -35,7 +34,7 @@ const main = async () => {
   await prisma.reviewTemplates.createMany({
     data: reviewTemplate
   })
-  
+
   await prisma.templateOnTags.createMany({
     data: templateTags
   })
