@@ -6,10 +6,10 @@ import { usersTabelHeads } from '@utils/constants'
 import { usersTableClsses, usersTableRowClasses, userTableHeadClasses } from '@comp/PendingReviews/style'
 
 interface Props {
-  currentUsers: usersProps[]
+  currentData: usersProps[]
 }
 
-const UsersTable = ({ currentUsers }: Props) => (
+const UsersTable = ({ currentData }: Props) => (
   <div className='overflow-x-auto relative shadow-md'>
     <table className={usersTableClsses}>
       <thead className={userTableHeadClasses}>
@@ -22,7 +22,7 @@ const UsersTable = ({ currentUsers }: Props) => (
         </tr>
       </thead>
       <tbody>
-        {currentUsers ? (currentUsers.map(({
+        {currentData ? (currentData.map(({
           id, first_name, last_name, joining_date, Designations, email, profile_pic, designation_id
         }) => (
           <tr key={id} className={usersTableRowClasses}>

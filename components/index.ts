@@ -10,6 +10,7 @@ import ReviewTable from '@comp/ReviewTable'
 import Signin from '@comp/Signin'
 import Teams from '@comp/Teams'
 import TotalReviews from '@comp/TotalReviews'
+import Pagination from '@comp/pagination'
 
 export {
   Dashboard,
@@ -24,4 +25,5 @@ export {
   Signin,
   Teams,
   TotalReviews,
+  Pagination,
 }
