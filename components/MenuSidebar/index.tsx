@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { signOut } from 'next-auth/react'
 import { useState } from 'react'
+import Link from 'next/link'
 
 import Label from '@comp/MenuSidebar/label'
 
@@ -31,14 +32,14 @@ const MenuSidebar = () => {
       <div className='flex flex-col items-start'>
         {menuItems.map(({ icon: Icon, ...menu }) => (
           <div className={menuItemClasses} key={menu.id}>
-            <a href={menu.link}>
+            <Link href={menu.link}>
               <div className={menuGroupClasses}>
                 <div className='w-9'>
                   <Icon />
                 </div>
                 <Label label={menu.label} collapsed={!toggleCollapse} />
               </div>
-            </a>
+            </Link>
           </div>
         ))}
         <div className={menuItemClasses}>
