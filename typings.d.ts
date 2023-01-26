@@ -155,6 +155,19 @@ export interface usersProps {
   updated_at: string
 }
 
+export interface userReviews {
+  id: string
+  user_id: string
+  estimated_point: float
+  is_approved: boolean
+  reviewed_by_id: number
+  quarter_no: number
+  created_at: string
+}
+
+export interface currentUser{
+  id: string
+}
 interface SessionProps {
   req: IncomingMessage
 }

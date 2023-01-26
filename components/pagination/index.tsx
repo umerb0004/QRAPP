@@ -1,29 +1,31 @@
 import { useState } from 'react'
 import ReactPaginate from 'react-paginate'
-import useSwr from 'swr'
-import axios from 'axios'
 
 import { usersPerPage } from '@utils/constants'
 import { paginationActiveClassses } from '@comp/PendingReviews/style'
+import { currentUser, usersProps } from '@src/typings'
 
-const Pagination = ({table: Table,apiAddress}) => {
+
+interface props{
+  table: React.ElementType,
+  usersToShow: usersProps[],
+  currentUser?: currentUser
+}
+
+const Pagination = ({table: Table,usersToShow,currentUser}:props) => {
   const [userOffset, setItemOffset] = useState(0)
 
-  const fetcher = (url: string) => axios.get(url).then(res => res.data)
-  const { data, isLoading } = useSwr(apiAddress, fetcher)
-  if (isLoading) return <h1>loading</h1>
-
   const endOffset = userOffset + usersPerPage
-  const currentData = data?.slice(userOffset, endOffset)
-  const pageCount = Math.ceil(data?.length / usersPerPage)
+  const currentData = usersToShow?.slice(userOffset, endOffset)
+  const pageCount = Math.ceil(usersToShow?.length / usersPerPage)
 
   const handlePageClick = (event: { selected: number }) => {
-    const newOffset = (event.selected * usersPerPage) % data.length
+    const newOffset = (event.selected * usersPerPage) % usersToShow.length
     setItemOffset(newOffset)
   }
 
   return <>
-      <Table currentData={currentData} />
+      <Table currentData={currentData} currentUser={currentUser}/>
       <ReactPaginate
         className='flex justify-end py-4'
         nextLabel=' >'
