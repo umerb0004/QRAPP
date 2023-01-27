@@ -1,11 +1,11 @@
 import { NextApiResponse } from 'next'
-import { PrismaClient } from '@prisma/client'
+
+import { prisma } from '@utils/clients'
 
 export default async function handler(
-  req: { body: { email: string, password: string } },
+  req: { body: { email: string; password: string } },
   res: NextApiResponse
 ) {
-  const prisma = new PrismaClient()
   try {
     const updatedUser = await prisma.users.update({
       where: { email: req.body.email },

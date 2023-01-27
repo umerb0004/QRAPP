@@ -4,13 +4,15 @@ module.exports = {
     './pages/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
   ],
-  plugins: [
-    require('flowbite/plugin')
-  ],
+  plugins: [require('flowbite/plugin')],
   theme: {
     extend: {
       colors: {
         'regal-blue': '#243c5a',
+      },
+      fontFamily: {
+        Poppins: ['Poppins', 'sans-serif'],
+        Pacifico: ['Pacifico'],
       },
     },
     screens: {
@@ -33,9 +35,5 @@ module.exports = {
       '2xl': '1535px',
     },
   },
-  plugins: [
-    require('tailwind-scrollbar'),
-    require('tailwind-scrollbar-hide')
-  ],
+  plugins: [require('tailwind-scrollbar'), require('tailwind-scrollbar-hide')],
 }
-

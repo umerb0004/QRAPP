@@ -1,15 +1,13 @@
 import axios from 'axios'
 import useSwr from 'swr'
-import Pagination from '../pagination'
+import { useSession } from 'next-auth/react'
 
+import Pagination from '../pagination'
+import ReviewDetails from './reviewDetails'
 import UsersTable from '@comp/PendingReviews/usersTable'
 
-import { useSession } from 'next-auth/react'
-import ReviewDetails from './reviewDetails'
 
 const PendingReviews = () => {
-
-
   const { data: session } = useSession()
   let email: string = ''
 
@@ -24,7 +22,7 @@ const PendingReviews = () => {
     <ReviewDetails count = {usersToShow.length} graphData = {[reviewedByCurrentUser.length, usersToShow.length]}/>
     <div className='rounded-lg shadow-lg'>
       <Pagination table={UsersTable} usersToShow={usersToShow} currentUser={currentUser}/>
-   </div>
+    </div>
   </>
 }
 

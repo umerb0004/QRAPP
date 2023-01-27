@@ -2,10 +2,8 @@ import { Modal } from 'antd'
 
 import { ModalProps } from '@src/typings'
 
-
-export const ModalComponent = (propsValues: ModalProps) => {
+const ModalComponent = (propsValues: ModalProps) => {
   const {
-    closable = true,
     onClose = () => {},
     closeModal = () => {},
     isVisible,
@@ -16,11 +14,12 @@ export const ModalComponent = (propsValues: ModalProps) => {
     closeable = true,
     closeIcon = false,
     centered = true,
-    children = {}
+    destroyOnClose = false,
+    children,
   } = propsValues
 
   const onModalClose = (isClose: React.MouseEvent<HTMLElement, MouseEvent>) => {
-    if (!closable) return
+    if (!closeable) return
     if (isClose) {
       closeModal()
       onClose()
@@ -38,12 +37,13 @@ export const ModalComponent = (propsValues: ModalProps) => {
       closeIcon={closeIcon}
       closable={closeable}
       centered={centered}
+      destroyOnClose={destroyOnClose}
     >
-      <div className='modal-position'>
-        {children}
-      </div>
+      <div className='modal-position'>{children}</div>
     </Modal>
   )
 }
 
 ModalComponent.displayName = 'Modal Component'
+
+export default ModalComponent

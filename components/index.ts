@@ -1,6 +1,7 @@
 import Dashboard from '@comp/Dashboard'
 import Layout from '@comp/Layout'
 import MenuSidebar from '@comp/MenuSidebar'
+import ModalComponent from '@comp/modal'
 import ProfileSidebar from '@comp/ProfileSideBar'
 import PageTitle from '@comp/PageTitle'
 import ProfileImage from '@comp/Image'
@@ -16,6 +17,7 @@ export {
   Dashboard,
   Layout,
   MenuSidebar,
+  ModalComponent,
   PageTitle,
   ProfileSidebar,
   ProfileImage,

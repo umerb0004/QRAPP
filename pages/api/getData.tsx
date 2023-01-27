@@ -1,15 +1,14 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { PrismaClient } from '@prisma/client'
 
-const handler = async (req: NextApiRequest, res: NextApiResponse) => {  
+import { prisma } from '@utils/clients'
+
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
-    const prisma = new PrismaClient()
-
     const getEmail = await prisma.users.findMany({
       where: {
         email: {
-          contains: '@devsinc.com'
-        }
+          contains: '@devsinc.com',
+        },
       },
       select: {
         id: true,
@@ -19,14 +18,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         Designations: {
           select: {
             name: true,
-          }
+          },
         },
-      }
+      },
     })
-    
+
     return res.status(200).send(getEmail)
-  }
-  catch(err) {
+  } catch (err) {
     console.log('Error', err)
   }
 }

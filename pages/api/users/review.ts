@@ -1,7 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { PrismaClient, Tasks_type } from '@prisma/client'
+import { Tasks_type } from '@prisma/client'
 
 import { type FormReqData } from '@src/typings'
+import { prisma } from '@utils/clients'
 
 export default async function handler(
   req: NextApiRequest,
@@ -9,7 +10,6 @@ export default async function handler(
 ) {
   if (req.method === 'GET') {
     const { id: designationId, quarter } = req.query
-    const prisma = new PrismaClient()
 
     if (![1, 2, 3, 4].includes(parseInt(quarter as string))) {
       res.status(400).send({ error: 'Invalid Value for Quarter Number' })
@@ -25,6 +25,7 @@ export default async function handler(
             select: {
               ReviewTags: {
                 select: {
+                  id: true,
                   name: true,
                   description: true,
                 },
@@ -48,32 +49,34 @@ export default async function handler(
       Object.entries(marks).map(([key, { rating, reason }]) => {
         if (!rating) Object.assign(marks[key], { rating: 0, reason })
       })
-      const prisma = new PrismaClient()
+
       const review = await prisma.userReviews.create({
         data: {
           user_id: userId,
           marks_received: marks,
-          is_approved: false
-        }
+          reviewed_by_id: null,
+          is_approved: false,
+        },
       })
 
-      const tasks = goals.map(({ description: goal, date }) => {
+      const tasks = goals.map(({ description: goal, duration }) => {
         return {
           user_id: userId,
           record_id: review.id,
           description: goal,
-          duration: date,
+          duration: duration,
           assigned_by: 1,
-          type: Tasks_type.userReviews
+          type: Tasks_type.userReviews,
         }
       })
 
       await prisma.tasks.createMany({
-        data: tasks
+        data: tasks,
       })
 
       res.status(201).json('Added review!')
     } catch (error) {
+      console.log('error :>> ', error)
       res.status(500).json(error)
     }
   }

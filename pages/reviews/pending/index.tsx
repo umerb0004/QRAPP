@@ -1,6 +1,6 @@
 import { MenuSidebar, PageTitle, PendingReviews } from 'components'
 
-export { getServerSideProps } from '../_app'
+export { getServerSideProps } from '../../_app'
 
 const Review = () => (
   <div className='h-full flex flex-row justify-start'>

@@ -1,12 +1,12 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { PrismaClient } from '@prisma/client'
+
+import { prisma } from '@utils/clients'
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   const { email } = req.query
-  const prisma = new PrismaClient()
 
   try {
     const currentUser = await prisma.users.findUnique({
@@ -15,7 +15,7 @@ export default async function handler(
       },
       select: {
         id: true,
-      }
+      },
     })
 
     const teams = await prisma.users.findMany({
@@ -32,9 +32,9 @@ export default async function handler(
         Designations: {
           select: {
             name: true,
-          }
+          },
         },
-      }
+      },
     })
 
     res.status(200).json(teams)

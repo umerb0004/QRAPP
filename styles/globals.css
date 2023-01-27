@@ -1,8 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@200;300;400&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap');
 
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
@@ -46,6 +46,19 @@ a {
 
 .ant-modal-content {
   @apply !p-0
+}
+
+.ant-picker-input>input {
+  color: rgb(82,82,82,1) !important;
+}
+
+.ant-tooltip-inner {
+  background-color: white !important;
+  color: black !important;
+}
+
+.ant-tooltip {
+  --antd-arrow-background-color: white !important
 }
 
 .modal-position {

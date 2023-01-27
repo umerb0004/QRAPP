@@ -1,3 +1,5 @@
+import { Control } from 'react-hook-form'
+
 export interface SigninProps {
   providers: {
     id: string
@@ -45,7 +47,6 @@ export interface ModalProps {
   component?: React.FC<unknown>
   props?: { [key: string]: unknown }
   isVisible?: boolean
-  closable?: boolean
   onClose?: Function
   closeModal?: Function
   width?: number
@@ -61,7 +62,8 @@ export interface ModalProps {
   modalFooter?: JSX.Element[]
   closeable?: boolean
   centered?: boolean
-  children?: unknown
+  destroyOnClose?: boolean
+  children?: React.ReactNode
 }
 
 export type Tag<T> = keyof T
@@ -83,17 +85,26 @@ export type Reason<Type> = {
   [Property in keyof Type as `${Property}.reason`]: string
 }
 
-type Goal = {
-  description: string
-  date: Date
+type Data = {
+  rating: number
+  reason: string
 }
 
-export type FormFields = Rating<Tags> &
-  Reason<Tags> & {
-    goals: Goal[]
-  }
+export type FieldData<Type> = {
+  [Property in keyof Type as `${Property}`]: Data
+}
+
+type Goal = {
+  description: string
+  duration: Date
+}
+
+export type FormFields = FieldData<Tags> & {
+  goals: Goal[]
+}
 
 export type InputFieldDetails<T> = {
+  id: number
   tag: keyof Rating<T>
   feedback: keyof Reason<T>
   desc: string
@@ -117,15 +128,50 @@ export type FormReqData = FormDataObject & {
 export type ReviewTags<T> = {
   name: Tag<T>
   description: string
+  id: number
 }
 
-export type ReviewModalProps = Person & {
+export type RatingProps = {
+  control: Control<FormFields>
+  desc: string
+  feedback: keyof Reason<Tags>
+  label: Tag<Tags>
+  tag: keyof Rating<Tags>
+}
+
+export type GoalProps = {
+  control: Control<FormFields>
+  index: number
+}
+
+export type SubmissionModalProps = {
+  submitForm: () => Promise<void>
+}
+
+export type ReviewFormProps = Person & {
   id: number
   designation_id: number
 }
 
-export type ReviewFormProps = ReviewModalProps & {
-  hideModal: VoidFunction
+export type LastQuarterReview = {
+  marks_received: FormDataObject
+  quarter_no: number
+  Tasks: Goal[]
+}
+
+export type SidebarProps = LastQuarterReview & {
+  quarterSelected: number
+}
+
+export type ReviewPageProps = {
+  user: ReviewFormProps
+  quarterReview: LastQuarterReview
+}
+
+export type FormProps = {
+  quarterSelected: number
+  designation_id: number
+  userId: number
 }
 
 export interface chartProps {
@@ -171,3 +217,10 @@ export interface currentUser{
 interface SessionProps {
   req: IncomingMessage
 }
+
+export type DetailProps = React.PropsWithChildren<{
+  onClick: React.MouseEventHandler<HTMLDivElement>
+  title: string
+  expanded: boolean
+  desc: string
+}>
