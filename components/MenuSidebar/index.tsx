@@ -16,14 +16,14 @@ const MenuSidebar = () => {
 
   return <>
   <aside className='h-screen sticky top-0'>
-    <div className={wrapperClasses(toggleCollapse)}>
+    <div className={wrapperClasses(toggleCollapse) }>
       <div className='flex flex-col'>
         <div className='flex py-4'>
           <button onClick={handleSidebarToggle}>
             <Image
               src={toggleCollapse ? '/logo1.png' : '/logo2.png'}
               alt='logo'
-              width={toggleCollapse ? 40 : 175}
+              width={toggleCollapse ? 30 : 175}
               height={40}
             />
           </button>
@@ -37,7 +37,7 @@ const MenuSidebar = () => {
                 <div className='w-9'>
                   <Icon />
                 </div>
-                <Label label={menu.label} collapsed={!toggleCollapse} />
+                <Label label={menu.label} collapsed={!toggleCollapse} link={menu.link}/>
               </div>
             </Link>
           </div>

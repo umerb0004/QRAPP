@@ -94,15 +94,22 @@ a {
 }
 
 .custom-card h2{
-  @apply text-[13px] justify-start mb-[22px] 
+  @apply text-[13px] justify-start mb-[22px]
 }
 
 .custom-card b {
   @apply text-[20px]
 }
- 
+
 .card-container button:hover {
   @apply delay-[0.4ms] transform scale-[1.04]
+}
+
+.active {
+  @apply text-[#49BDB4] font-bold
+}
+.custom-height {
+  height: 75vh;
 }
 
 @media (prefers-color-scheme: dark) {

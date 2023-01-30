@@ -2,40 +2,35 @@ import {
   ArrowUpOnSquareIcon,
   ChevronRightIcon,
   ChevronLeftIcon,
-  Cog6ToothIcon,
+  Cog8ToothIcon,
   DocumentTextIcon,
   DocumentMinusIcon,
   EyeIcon,
-  GiftIcon,
+  TrophyIcon,
   PencilIcon,
   PresentationChartBarIcon,
-  RectangleGroupIcon,
+  SquaresPlusIcon,
   TagIcon,
   UserGroupIcon,
+  CalendarDaysIcon,
+  ClipboardDocumentListIcon,
 } from '@heroicons/react/24/solid'
 
-const iconClasses =
-  'h-6 w-6 color: text-neutral-600 group-hover:fill-blue-500 group-hover:scale-105'
+const iconClasses = 'transform transition duration-500 h-6 w-6 color: text-neutral-600 group-hover:scale-105 hover:fill-gray-900 group-hover:fill-gray-900'
 
-export const AwardIcon = () => <GiftIcon className={iconClasses} />
-export const DashboardIcon = () => (
-  <RectangleGroupIcon className={iconClasses} />
-)
+export const AwardIcon = () => <TrophyIcon className={iconClasses} />
+export const DashboardIcon = () => <SquaresPlusIcon className={iconClasses} />
 export const EditIcon = () => <PencilIcon className={iconClasses} />
-export const HomeIcon = () => <TagIcon className={iconClasses} />
+export const BiWeeklySync = () => <CalendarDaysIcon className={iconClasses} />
 export const LeftArrowIcon = () => <ChevronLeftIcon className={iconClasses} />
 export const PeopleIcon = () => <UserGroupIcon className={iconClasses} />
-export const ReportIcon = () => (
-  <PresentationChartBarIcon className={iconClasses} />
-)
+export const ReportIcon = () => <PresentationChartBarIcon className={iconClasses} />
+export const ApprovedReviews = () => <ClipboardDocumentListIcon className={iconClasses} />
 export const ReviewIcon = () => <DocumentMinusIcon className={iconClasses} />
-export const ReviewTemplateIcon = () => (
-  <DocumentTextIcon className={iconClasses} />
-)
-export const RightArrowIconStyled = () => (
-  <ChevronRightIcon className={iconClasses} />
-)
-export const SettingsIcon = () => <Cog6ToothIcon className={iconClasses} />
+export const ReviewTemplateIcon = () => <DocumentTextIcon className={iconClasses} />
+export const RightArrowIcon = () => <ChevronRightIcon className={iconClasses} />
+export const RightArrowIconStyled = () => <ChevronRightIcon className={iconClasses} />
+export const SettingsIcon = () => <Cog8ToothIcon className={iconClasses} />
 export const SignoutIcon = () => <ArrowUpOnSquareIcon className={iconClasses} />
 export const TagsIcon = () => <TagIcon className={iconClasses} />
 export const ViewIcon = () => <EyeIcon className={iconClasses} />
@@ -43,7 +38,6 @@ export const ViewIcon = () => <EyeIcon className={iconClasses} />
 export { PlusCircleIcon as AddIcon } from '@heroicons/react/24/outline'
 export {
   ChevronDownIcon as DropdownIcon,
-  ChevronRightIcon as RightArrowIcon,
   EnvelopeIcon as EmailIcon,
   ChevronUpIcon as UpIcon,
   Squares2X2Icon as ViewAllIcon,

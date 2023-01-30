@@ -2,7 +2,7 @@ import { FormEventHandler, useState } from 'react'
 import Link from 'next/link'
 import { signIn } from 'next-auth/react'
 import { ToastContainer, toast } from 'react-toastify'
-
+import 'react-toastify/dist/ReactToastify.css'
 
 import GoogleSignin from '@comp/Signin/googleSignin'
 
@@ -11,7 +11,7 @@ import {
   or, input, rememberMe,
   rememberMeLabel, signinButton,
 } from '@comp/Signin/styles'
-import 'react-toastify/dist/ReactToastify.css'
+
 
 
 const SigninForm = ({ providers }: SigninProps) => {
