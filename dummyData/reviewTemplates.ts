@@ -58,9 +58,23 @@ export const reviewTemplate = [
   {
     id: 9,
     designation_id: 9,
-    department_id: 2,
+    department_id: 6,
     created_at: '2015-03-25T12:00:00Z',
     updated_at: '2015-03-25T12:00:00Z'
   },
+  {
+    id: 10,
+    designation_id: 10,
+    department_id: 6,
+    created_at: '2015-03-25T12:00:00Z',
+    updated_at: '2015-03-25T12:00:00Z'
+  },
+  {
+    id: 11,
+    designation_id: 11,
+    department_id: 6,
+    created_at: '2015-03-25T12:00:00Z',
+    updated_at: '2015-03-25T12:00:00Z'
+  }
 
 ]

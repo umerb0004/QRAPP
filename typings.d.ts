@@ -131,6 +131,7 @@ export type ReviewTags<T> = {
   id: number
 }
 
+<<<<<<< HEAD
 export type RatingProps = {
   control: Control<FormFields>
   desc: string
@@ -139,16 +140,9 @@ export type RatingProps = {
   tag: keyof Rating<Tags>
 }
 
-export type GoalProps = {
-  control: Control<FormFields>
-  index: number
-}
-
-export type SubmissionModalProps = {
-  submitForm: () => Promise<void>
-}
-
-export type ReviewFormProps = Person & {
+=======
+>>>>>>> 4fe426e (Conflicts Resolved)
+export type ReviewModalProps = Person & {
   id: number
   designation_id: number
 }
@@ -218,9 +212,8 @@ interface SessionProps {
   req: IncomingMessage
 }
 
-export type DetailProps = React.PropsWithChildren<{
-  onClick: React.MouseEventHandler<HTMLDivElement>
-  title: string
-  expanded: boolean
-  desc: string
-}>
+export type ReviewTag = {
+  id: number
+  name: string
+  description: string
+}

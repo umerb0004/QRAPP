@@ -1,6 +1,8 @@
 import { format } from 'date-fns'
 import * as Icons from '@public/Icons'
 
+const baseURL = process.env.NEXT_PUBLIC_SERVER_URL
+
 export const menuItems = [
   { id: 1, label: 'Dashboard', icon: Icons.DashboardIcon, link: '/' },
   { id: 2, label: 'Teams', icon: Icons.PeopleIcon, link: '/teams' },
@@ -10,7 +12,12 @@ export const menuItems = [
   { id: 6, label: 'Awards', icon: Icons.AwardIcon, link: '/' },
   { id: 7, label: 'Reports', icon: Icons.ReportIcon, link: '/' },
   { id: 8, label: 'Tags', icon: Icons.TagsIcon, link: '/' },
-  { id: 9, label: 'Review Template',icon: Icons.ReviewTemplateIcon, link: '/',},
+  {
+    id: 9,
+    label: 'Review Template',
+    icon: Icons.ReviewTemplateIcon,
+    link: '/reviews/template',
+  },
   { id: 10, label: 'Settings', icon: Icons.SettingsIcon, link: '/' },
 ]
 
@@ -41,3 +48,10 @@ export const previousYear = currentYear - 1
 export const today = format(new Date(), 'dd/MM/yyyy')
 
 export const usersPerPage: number = 10
+
+export const apis ={
+  'reviewWeightage':{url:baseURL + 'review/weightage'},
+  'weightageUpdate':{url:baseURL + 'review/updateWeightage'},
+  'tags':{url:baseURL + 'tags'},
+  'designations':{url:baseURL + 'designation'}
+}

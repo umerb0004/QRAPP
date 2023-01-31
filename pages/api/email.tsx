@@ -2,7 +2,7 @@ import { GET } from '@utils/axios'
 
 const sendMail = require('@sendgrid/mail')
 const { NEXT_PUBLIC_SG_API_KEY, NEXT_PUBLIC_FROM_EMAIL } = process.env
-const leads = ['fareed.murtaza@devsinc.com']
+const leads = ['sajjad.mehmood@devsinc.com']
 
 sendMail.setApiKey(NEXT_PUBLIC_SG_API_KEY)
 
