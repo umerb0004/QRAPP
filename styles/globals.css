@@ -106,7 +106,7 @@ a {
 }
 
 .active {
-  @apply text-[#49BDB4] font-bold
+  @apply text-[#49BDB4]
 }
 .custom-height {
   height: 75vh;

@@ -3,13 +3,14 @@ import { useRouter } from 'next/router'
 
 import React from 'react'
 
-export default function Label({ label, collapsed, link }) {
+const Label = ({ label, collapsed, link }) => {
   const router = useRouter()
   return (
-    collapsed
-    ? (<span className={router.pathname == `${link}` ? 'active' : menuLabelClasses}>
+    collapsed ?
+    <span className={menuLabelClasses + (router.pathname == `${link}` && ' active')}>
       {label}
-    </span>
-    ) : null
+    </span> : null
   )
 }
+
+export default Label
