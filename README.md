@@ -41,29 +41,25 @@ If everything when fine, you should run
   sudo apt-get update
   sudo apt-get install nodejs
 
-#### Install NPM packages
-```bash
- npm install
-```
-## Start & watch
-
-
-```bash
- npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result
-
-
 ## Languages & tools
 
 
 ### TypeScript
-
+.
 - [Next.js](https://github.com/vercel/next.js) is used for frontend and backend.
 - [eslint](https://eslint.org/) for better code quality.
 - [prettier](https://prettier.io/) for maintaining code quality in project.
 
+### Tailwind CSS
+- [Tailwind](https://tailwindcss.com/) is used for styling.
+
+### TypeScript Installation
+  npm i ts-node
+
+#### Install NPM packages
+```bash
+ npm install
+```
 ### Database Setup
 Migration run
 ```bash
@@ -74,20 +70,14 @@ DB seed
  npx prisma db seed
 ```
 
-### Tailwind CSS 
-- [Tailwind](https://tailwindcss.com/) is used for styling.
+## Start & watch
 
-## Environment Variables
-Create a .env file in the root of your project and add following variables
+```bash
+ npm run dev
+```
 
-- DATABASE_URL=
-- GOOGLE_CLIENT_ID=
-- GOOGLE_CLIENT_SECRET=
-- NEXTAUTH_URL=
-- JWT_SECRET=
-- NEXT_PUBLIC_SG_API_KEY =
-- NEXT_PUBLIC_FROM_EMAIL =
-- NEXT_PUBLIC_CRONJOB_API =
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result
+
 ## Notes
 - Created DB schema
 - Implemented Sign In with Google Functionality.
@@ -95,7 +85,6 @@ Create a .env file in the root of your project and add following variables
 - Created UI of Sidebar.
 - Sent Email to Reporting To.
 - Added ESLint and Stylelint for consistency and better code quality.
-
 
 
 ## Future Work
