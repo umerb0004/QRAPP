@@ -57,6 +57,19 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     },
     take: 1,
   })
+  if (!userReview) {
+    const quarterReview = {
+      Tasks: [],
+      marks_received: {},
+      quarter_no: 0,
+    }
+    return {
+      props: {
+        user,
+        quarterReview,
+      },
+    }
+  }
 
   const Tasks = await prisma.tasks.findMany({
     where: {
