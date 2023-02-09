@@ -48,6 +48,7 @@ const Goal: React.FC<Props> = ({ control, index }) => {
               width: '100%',
               margin: 2,
             }}
+            required={true}
             onChange={onChange}
             placeholder='Description: '
             allowClear

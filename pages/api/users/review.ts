@@ -44,17 +44,27 @@ export default async function handler(
   } else if (req.method === 'POST') {
     const { ...data } = req.body as FormReqData
     if (!data) res.status(400).send({ error: 'Provide Complete data' })
-    let { userId, goals, ...marks } = data
+    let { userId, session, goals, ...marks } = data
+
     try {
       Object.entries(marks).map(([key, { rating, reason }]) => {
         if (!rating) Object.assign(marks[key], { rating: 0, reason })
+      })
+
+      const reviewerId = await prisma.users.findFirst({
+        where: {
+          email: session?.user?.email as string,
+        },
+        select: {
+          id: true,
+        },
       })
 
       const review = await prisma.userReviews.create({
         data: {
           user_id: userId,
           marks_received: marks,
-          reviewed_by_id: null,
+          reviewed_by_id: reviewerId?.id,
           is_approved: false,
         },
       })

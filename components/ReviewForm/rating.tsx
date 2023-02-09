@@ -41,6 +41,7 @@ const Rating: React.FC<Props> = ({ control, desc, feedback, label, tag }) => <>
           margin: 2,
           marginBottom: '1rem'
         }}
+        required={true}
         onChange={onChange}
         placeholder='Enter description here... '
         allowClear

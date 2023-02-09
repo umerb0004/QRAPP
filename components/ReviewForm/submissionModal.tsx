@@ -44,13 +44,11 @@ const SubmissionModal: React.FC<Props> = ({ submitForm }) => {
               >
                 Cancel
               </button>
-              <button
-                key='submit'
-                onClick={handleSubmit}
+              <input
+                type='submit'
                 className={confirmButtonClasses}
-              >
-                Confirm
-              </button>
+                value='Confirm'
+              />
             </div>
           </div>
         </ModalComponent>

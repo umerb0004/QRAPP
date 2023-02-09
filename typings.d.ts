@@ -122,6 +122,10 @@ export type FormDataObject = {
 
 export type FormReqData = FormDataObject & {
   userId: number
+  session: {
+    user?: UserInfo | undefined | null
+    expires?: string | undefined | null
+  }
   goals: Goal[]
 }
 
@@ -131,7 +135,6 @@ export type ReviewTags<T> = {
   id: number
 }
 
-<<<<<<< HEAD
 export type RatingProps = {
   control: Control<FormFields>
   desc: string
@@ -140,8 +143,6 @@ export type RatingProps = {
   tag: keyof Rating<Tags>
 }
 
-=======
->>>>>>> 4fe426e (Conflicts Resolved)
 export type ReviewModalProps = Person & {
   id: number
   designation_id: number
