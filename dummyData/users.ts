@@ -358,5 +358,23 @@ export const users = [
     profile_pic: 'https://hrms-prod.s3.us-east-2.amazonaws.com/tenant/1/uploads/user/image/558/cropped-profile-image-1645471448732.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJJJSUW3TK7YWPMHQ%2F20230102%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Date=20230102T223007Z&X-Amz-Expires=172800&X-Amz-SignedHeaders=host&X-Amz-Signature=1c108d8a8995654b47e75466f7a1bf42a52de0c7ffd0f663c5ecdf1d5b9c8a89',
     created_at: '2015-03-25T12:00:00Z',
     updated_at: '2015-03-25T12:00:00Z'
+  },
+  {
+    first_name: 'Ali',
+    last_name: 'Hasnain',
+    joining_date: '2015-03-25T12:00:00Z',
+    department_id: 1,
+    designation_id: 9,
+    email: 'ali.hasnain@devsinc.com',
+    password: 'abcd',
+    employee_id: 558,
+    lead_id: 2,
+    manager_id: 1,
+    on_leave: false,
+    partial_joining_date: '2015-03-25T12:00:00Z',
+    review_date: '2015-03-25T12:00:00Z',
+    profile_pic: 'https://hrms-prod.s3.us-east-2.amazonaws.com/tenant/1/uploads/user/image/558/cropped-profile-image-1645471448732.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJJJSUW3TK7YWPMHQ%2F20230102%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Date=20230102T223007Z&X-Amz-Expires=172800&X-Amz-SignedHeaders=host&X-Amz-Signature=1c108d8a8995654b47e75466f7a1bf42a52de0c7ffd0f663c5ecdf1d5b9c8a89',
+    created_at: '2015-03-25T12:00:00Z',
+    updated_at: '2015-03-25T12:00:00Z'
   }
 ]

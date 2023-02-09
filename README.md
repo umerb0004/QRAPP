@@ -20,37 +20,35 @@ below.
 
 
 ## Installations
-
 #### Node installation on OS X
 
 You will need to use a Terminal. On OS X, you can find the default terminal in
 `/Applications/Utilities/Terminal.app`.
 
 Please install [Homebrew](http://brew.sh/) if it's not already done with the following command.
-
+```bash
   $ ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
-
-If everything when fine, you should run
-
+```
+If everything works fine, you should run
+```bash
   brew install node
-
+```
 #### Node installation on Linux
-
+```bash
   sudo apt-get install python-software-properties
+
   sudo add-apt-repository ppa:chris-lea/node.js
+
   sudo apt-get update
+
   sudo apt-get install nodejs
+  ```
 
 ## Languages & tools
 
-
-### TypeScript
-.
 - [Next.js](https://github.com/vercel/next.js) is used for frontend and backend.
 - [eslint](https://eslint.org/) for better code quality.
 - [prettier](https://prettier.io/) for maintaining code quality in project.
-
-### Tailwind CSS
 - [Tailwind](https://tailwindcss.com/) is used for styling.
 
 ### TypeScript Installation
@@ -61,11 +59,27 @@ If everything when fine, you should run
  npm install
 ```
 ### Database Setup
-Migration run
+##### Installing MySQL
+To install it, update the package index on your server if you’ve not done so recently:
+```bash
+sudo apt update
+```
+Then install the mysql-server package:
+```bash
+sudo apt install mysql-server
+```
+Ensure that the server is running using the following command:
+```bash
+sudo systemctl start mysql.service
+```
+After running the above commands, [configure](https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-20-04) mysql and move forward.
+##### Migration run
+Run the following command to execute migrations:
 ```bash
  npx prisma migrate dev
 ```
-DB seed
+##### DB seed
+Run the following command to seed initail data to database:
 ```bash
  npx prisma db seed
 ```

@@ -7,7 +7,7 @@ export const profileNameClasses = 'font-medium text-xl mt-1.5 text-neutral-600 c
 export const profileCardClasses = `${styles.card} flex flex-col items-center`
 export const expendedClasses = expand => `${expand
   ? 'translate-y-1 text-left'
-  : 'flex flex-row translate-y-0'} 
+  : 'flex flex-row translate-y-0'}
   transform transition duration-[5000] ease-in`
 export const teamLengthClasses = 'rounded-full bg-gray-600 h-12 w-12 text-white flex items-center justify-center'
 export const meClasses = enabled => `${enabled ? 'text-gray-400' : 'text-gray-600'} font-medium text-md`

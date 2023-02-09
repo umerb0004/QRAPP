@@ -17,7 +17,7 @@ const GoalsGraph = () => {
   ReactFC.fcRoot(FusionCharts, Charts, FusionTheme)
 
   return (
-    <div className='w-max-screen-sm flex justify-center p-4  bg-white shadow-lg rounded-3xl max-h-96 overflow-y-hidden'>
+    <div className='max-w-screen-sm flex justify-center p-5 bg-white shadow-lg rounded-3xl max-h-96 overflow-hidden'>
       <ReactFC {...chartConfigs} />
     </div>
   )
