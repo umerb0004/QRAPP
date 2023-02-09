@@ -9,9 +9,9 @@ const DataTable = ({ designation, number, tags }) => {
   const [check, setCheck] = useState(false)
   const [total, setTotal] = useState(0)
 
-  const [weightage, setWeightage] = useState([])
+  const [weightage, setWeightage] = useState<[]>()
 
-  useEffect(() => { getData() }, [])
+  useEffect(() => { getData() }, [check])
 
   const getData = async () => {
     const { data } = await axios.post(apis.reviewWeightage.url, { designation: designation.id })
@@ -37,7 +37,7 @@ const DataTable = ({ designation, number, tags }) => {
     <div>
       <table className='w-full text-sm text-left text-gray-500 dark:text-gray-400 table-auto overflow-scroll'>
         <tbody>
-          {weightage.map(
+          {weightage?.map(
             (item: { weightage: number }, key: number) => (
               <tr key={key} className='border-b dark:bg-gray-800 dark:border-gray-700 border-solid'>
                 <th scope='row' className='px-2 py-4 font-medium text-center border-2 border-grey'>
@@ -46,7 +46,7 @@ const DataTable = ({ designation, number, tags }) => {
               </tr>
             )
           )}
-          <ModalEdit check={check} setCheck={setCheck} tags={tags} weightage={weightage} setWeightage={setWeightage} />
+          {weightage && <ModalEdit check={check} setCheck={setCheck} tags={tags} weightage={weightage} setWeightage={setWeightage} />}
           <tr className='border-b dark:bg-gray-800 dark:border-gray-700 border-solid '>
             <th scope='row' className='px-2 py-4 font-medium text-center border-2 border-grey'>
               {total}

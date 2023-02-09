@@ -3,31 +3,43 @@ import { useState } from 'react'
 
 import { apis } from '@utils/constants'
 import InputField from './inputField'
+import { numberASCII } from '@utils/constants'
 
 const ModalEdit = ({ check, setCheck, tags, weightage, setWeightage }) => {
   const [error, setError] = useState(false)
+  const [data, setData] = useState([...weightage])
 
-  const handler = ({ target }) => {
-    const weights = weightage
-    weights.map(
-      (item) => {
-        if (item.tag_id == target.id) item.weightage = parseInt(target.value)
-      }
-    )
-    setWeightage(weights)
+  const handler = ({ target }, setValue) => {
+    const checkASCII = target.value.charCodeAt(target.value.length - 1)
+
+    if (checkASCII >= numberASCII.start && checkASCII <= numberASCII.end) {
+      setValue(target.value)
+      data.map(
+        (item) => {
+          if (item.tag_id === target.id) item.weightage = parseInt(target.value)
+        }
+      )
+    }
   }
 
   const changeWeightage = async () => {
-    let total = weightage.reduce((prevResult, nextValue) => prevResult + nextValue.weightage, 0)
+    let total = data.reduce((prevResult, nextValue) => prevResult + nextValue.weightage, 0)
 
     if (total != 100) {
       setError(true)
     }
     else {
-      await axios.post(apis.weightageUpdate.url, { weightage: weightage })
+      const newWeightage = [...data]
+      setWeightage(newWeightage)
+      await axios.post(apis.weightageUpdate.url, { weightage: data })
       setError(false)
       setCheck(false)
     }
+  }
+
+  const close = () => {
+    setData(weightage)
+    setCheck(false)
   }
 
   return <>
@@ -41,14 +53,6 @@ const ModalEdit = ({ check, setCheck, tags, weightage, setWeightage }) => {
               <h3 className='text-xl font-semibold'>
                 Edit Weightage
               </h3>
-              <button
-                className='p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none'
-                onClick={() => setCheck(false)}
-              >
-                <span className='bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none'>
-                  ×
-                </span>
-              </button>
             </div>
             <h3 className='text-red-800 text-center'>
               {error && 'Total Should be 100'}
@@ -62,7 +66,7 @@ const ModalEdit = ({ check, setCheck, tags, weightage, setWeightage }) => {
                 )}
               </div>
               <div>
-                {weightage.map((item, key) =>
+                {data.map((item, key) =>
                   <InputField key={key} item={item} handler={handler} />
                 )}
               </div>
@@ -70,7 +74,8 @@ const ModalEdit = ({ check, setCheck, tags, weightage, setWeightage }) => {
             <div className='flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b'>
               <button
                 className='text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'
-                type='button' onClick={() => setCheck(false)}
+                type='button'
+                onClick={() => close()}
               >
                 Close
               </button>

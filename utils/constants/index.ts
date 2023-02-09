@@ -55,3 +55,5 @@ export const apis ={
   'tags':{url:baseURL + 'tags'},
   'designations':{url:baseURL + 'designation'}
 }
+
+export const numberASCII = { start: 48, end: 57 }
