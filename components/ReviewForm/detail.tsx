@@ -23,7 +23,7 @@ const Detail: React.FC<Props> = ({
       {children}
     </div>
     {expanded && (
-      <div className='translate-x-5 text-sm text-justify p-3 m-2 text-white bg-blue-300 rounded-2xl'>
+      <div className='translate-x-2 text-sm text-justify p-3 break-words m-2 text-gray-500 bg-gray-100 shadow-md rounded-md'>
         {desc === '' ? 'No description' : desc}
       </div>
     )}

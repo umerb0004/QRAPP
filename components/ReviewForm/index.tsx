@@ -28,10 +28,19 @@ const ReviewForm: React.FC<Props> = ({ user, quarterReview }) => {
     profile_pic,
     designation_id,
   } = user
+  
+  const {quarter_no} = {...quarterReview}
   const [quarterSelected, setQuarterSelected] = useState(currentQuarter)
 
-  const year =
-    currentQuarter === 1 && quarterSelected === 4 ? previousYear : currentYear
+  const quarters = [{
+    value: currentQuarter,
+    label: `${currentQuarter} ${currentYear}`
+  }]
+
+  if (quarter_no == 0)  quarters.push({
+    value: previousQuarter,
+    label: `${previousQuarter} ${previousYear}`
+  })
 
   return <>
     <div className='flex flex-row w-screen'>
@@ -43,23 +52,14 @@ const ReviewForm: React.FC<Props> = ({ user, quarterReview }) => {
           <div className={formBodyClasses}>
             <div className='h-full'>
               <h1 className={quarterHeadingClasses}>
-                Q
+                Quarter
                 <Select
                   className='mx-1'
                   defaultValue={currentQuarter}
                   onChange={(value) => setQuarterSelected(value)}
-                  options={[
-                    {
-                      value: currentQuarter,
-                      label: currentQuarter,
-                    },
-                    {
-                      value: previousQuarter,
-                      label: previousQuarter,
-                    },
-                  ]}
+                  options={quarters}
                 />
-                {year} Review
+                Review
               </h1>
             </div>
             <div className={formHeaderClasses}>
@@ -88,7 +88,7 @@ const ReviewForm: React.FC<Props> = ({ user, quarterReview }) => {
           </div>
         </div>
       </div>
-      <Sidebar quarterSelected={quarterSelected} {...quarterReview} />
+      <Sidebar quarterSelected={quarterSelected} {...quarterReview} previousYear={previousYear} />
     </div>
   </>
 }

@@ -8,16 +8,11 @@ import {
   submitButtonClasses,
 } from './styles'
 
-const SubmissionModal: React.FC<Props> = ({ submitForm }) => {
+const SubmissionModal: React.FC<Props> = () => {
   const [modalOpen, setModalOpen] = useState(false)
 
   const showModal = () => setModalOpen(true)
   const hideModal = () => setModalOpen(false)
-
-  const handleSubmit = () => {
-    hideModal()
-    submitForm()
-  }
 
   return (
     <>

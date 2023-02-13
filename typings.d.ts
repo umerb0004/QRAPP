@@ -151,11 +151,13 @@ export type ReviewModalProps = Person & {
 export type LastQuarterReview = {
   marks_received: FormDataObject
   quarter_no: number
+  previousYear: number
   Tasks: Goal[]
 }
 
 export type SidebarProps = LastQuarterReview & {
   quarterSelected: number
+  previousYear: number
 }
 
 export type ReviewPageProps = {

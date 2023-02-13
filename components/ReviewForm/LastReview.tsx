@@ -8,7 +8,7 @@ import { type LastQuarterReview as Props } from '@src/typings'
 import { cardClasses } from './styles'
 
 
-const LastReview: React.FC<Props> = ({ Tasks, marks_received, quarter_no }) => {
+const LastReview: React.FC<Props> = ({ Tasks, marks_received, quarter_no, previousYear }) => {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null)
   const tagData = Object.entries(marks_received)
   const tags = tagData.length
@@ -27,7 +27,7 @@ const LastReview: React.FC<Props> = ({ Tasks, marks_received, quarter_no }) => {
         style={{ height: tags === 0 ? '2rem' : divHeight }}>
         {tags === 0 ? <p className='overflow-hidden'>No review</p> : <>
           {tagData.length !== 0 && <>
-            <p className='text-2xl mb-3'>Q{quarter_no}</p>
+            <p className='text-2xl mb-3'>Q{quarter_no}-{previousYear}</p>
             {tagData.map(([title, { rating, reason }], index) => (
               <Detail
                 key={`tags_${index}`}
@@ -50,11 +50,11 @@ const LastReview: React.FC<Props> = ({ Tasks, marks_received, quarter_no }) => {
               <Detail
                 key={`goals_${index}`}
                 onClick={() => toggleExpand(tags + index)}
-                title={`goal ${index + 1}`}
+                title={`Goal ${index + 1}`}
                 expanded={tags + index === expandedIndex}
                 desc={description}
               >
-                <p className='ml-auto'>
+                <p className='ml-auto text-sm'>
                   {dayjs(duration).format('DD/MM/YYYY')}
                 </p>
               </Detail>

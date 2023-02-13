@@ -28,7 +28,6 @@ export const ReportIcon = () => <PresentationChartBarIcon className={iconClasses
 export const ApprovedReviews = () => <ClipboardDocumentListIcon className={iconClasses} />
 export const ReviewIcon = () => <DocumentMinusIcon className={iconClasses} />
 export const ReviewTemplateIcon = () => <DocumentTextIcon className={iconClasses} />
-export const RightArrowIcon = () => <ChevronRightIcon className={iconClasses} />
 export const RightArrowIconStyled = () => <ChevronRightIcon className={iconClasses} />
 export const SettingsIcon = () => <Cog8ToothIcon className={iconClasses} />
 export const SignoutIcon = () => <ArrowUpOnSquareIcon className={iconClasses} />
@@ -41,6 +40,7 @@ export {
   EnvelopeIcon as EmailIcon,
   ChevronUpIcon as UpIcon,
   Squares2X2Icon as ViewAllIcon,
+  ChevronRightIcon as RightArrowIcon,
 } from '@heroicons/react/24/solid'
 
 export const SearchSvg = () => (

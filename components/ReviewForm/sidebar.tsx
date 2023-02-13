@@ -10,12 +10,14 @@ const Sidebar: React.FC<Props> = ({
   Tasks,
   marks_received,
   quarter_no,
+  previousYear,
 }) => {
   return (
     <div className='sticky h-screen w-[35rem] overflow-y-scroll overscroll-contain bg-slate-50'>
       <div className={sidebarClasses}>
         <LastReview
           quarter_no={quarter_no}
+          previousYear={previousYear}
           Tasks={Tasks}
           marks_received={marks_received}
         />
